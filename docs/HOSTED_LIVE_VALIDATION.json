@@ -1,0 +1,75 @@
+{
+  "at": "2026-11-09T09:09:38.740Z",
+  "url": "https://onequestion.tbud.workers.dev",
+  "providerRequests": 3,
+  "endpoints": [
+    "Fill",
+    "Extract",
+    "Decide"
+  ],
+  "fictionalInputs": true,
+  "transport": "HTTPS deployed Worker to real Clocked via official SDK",
+  "fill": {
+    "roles": [
+      "Welcome volunteer",
+      "Tickets volunteer",
+      "AV volunteer",
+      "Keyholder volunteer"
+    ],
+    "requirements": [
+      "able to operate sound independently",
+      "with current venue keyholder access"
+    ]
+  },
+  "analyze": {
+    "usage": [
+      6,
+      7
+    ],
+    "proposals": [
+      {
+        "label": "Is Cy available for the full event interval?",
+        "status": "yes",
+        "reviewed": false,
+        "validAnchorCount": 1
+      },
+      {
+        "label": "Is Cy willing to take Welcome?",
+        "status": "no",
+        "reviewed": false,
+        "validAnchorCount": 1
+      },
+      {
+        "label": "Is Cy willing to take Tickets?",
+        "status": "no",
+        "reviewed": false,
+        "validAnchorCount": 1
+      },
+      {
+        "label": "Is Cy willing to take AV?",
+        "status": "yes",
+        "reviewed": false,
+        "validAnchorCount": 1
+      },
+      {
+        "label": "Does Cy satisfy: independent sound operation?",
+        "status": "conditional",
+        "reviewed": false,
+        "validAnchorCount": 1
+      },
+      {
+        "label": "Is Cy willing to take Keyholder?",
+        "status": "yes",
+        "reviewed": false,
+        "validAnchorCount": 1
+      },
+      {
+        "label": "Does Cy satisfy: current venue keyholder access?",
+        "status": "conditional",
+        "reviewed": false,
+        "validAnchorCount": 1
+      }
+    ]
+  },
+  "limits": "Single bounded deployed API smoke test, not a repeated accuracy benchmark or browser-to-provider recording."
+}

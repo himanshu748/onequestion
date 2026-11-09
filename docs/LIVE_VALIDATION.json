@@ -1,0 +1,235 @@
+{
+  "at": "2026-11-09T07:58:51.822Z",
+  "maxRequests": 6,
+  "records": [
+    {
+      "endpoint": "fill",
+      "roles": [
+        "Welcome volunteer",
+        "Tickets volunteer",
+        "AV volunteer",
+        "Keyholder"
+      ],
+      "requirements": [
+        "independent sound operation",
+        "current venue keyholder access"
+      ],
+      "unsupported": false,
+      "credits": 11,
+      "model": "clocked-1.0",
+      "ms": 1400
+    },
+    {
+      "endpoints": [
+        "extract",
+        "decide"
+      ],
+      "personId": "cy",
+      "credits": [
+        5,
+        7
+      ],
+      "models": [
+        "clocked-1.0",
+        "clocked-1.0"
+      ],
+      "ms": 1107,
+      "facts": [
+        {
+          "kind": "availability",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "I am available for the full gathering on 14 November, 16:00\u201319:00 Asia/Kolkata"
+        },
+        {
+          "kind": "willingness",
+          "slotId": "welcome",
+          "status": "unknown",
+          "reviewed": false,
+          "validAnchors": 0
+        },
+        {
+          "kind": "willingness",
+          "slotId": "tickets",
+          "status": "unknown",
+          "reviewed": false,
+          "validAnchors": 0
+        },
+        {
+          "kind": "willingness",
+          "slotId": "av",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "I am happy to do AV"
+        },
+        {
+          "kind": "qualification",
+          "slotId": "av",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "I can operate sound independently."
+        },
+        {
+          "kind": "willingness",
+          "slotId": "keyholder",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "I am happy to do AV or Keyholder"
+        },
+        {
+          "kind": "qualification",
+          "slotId": "keyholder",
+          "status": "conditional",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "I think my venue keyholder access was renewed."
+        }
+      ]
+    },
+    {
+      "endpoints": [
+        "extract",
+        "decide"
+      ],
+      "personId": "ben",
+      "credits": [
+        5,
+        7
+      ],
+      "models": [
+        "clocked-1.0",
+        "clocked-1.0"
+      ],
+      "ms": 1069,
+      "facts": [
+        {
+          "kind": "availability",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "I am available for the full gathering, 14 November, 16:00\u201319:00 Asia/Kolkata"
+        },
+        {
+          "kind": "willingness",
+          "slotId": "welcome",
+          "status": "unknown",
+          "reviewed": false,
+          "validAnchors": 0
+        },
+        {
+          "kind": "willingness",
+          "slotId": "tickets",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "happy to do Tickets"
+        },
+        {
+          "kind": "willingness",
+          "slotId": "av",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "happy to do Tickets or AV"
+        },
+        {
+          "kind": "qualification",
+          "slotId": "av",
+          "status": "yes",
+          "reviewed": false,
+          "validAnchors": 1,
+          "quote": "can operate sound independently"
+        },
+        {
+          "kind": "willingness",
+          "slotId": "keyholder",
+          "status": "unknown",
+          "reviewed": false,
+          "validAnchors": 0
+        },
+        {
+          "kind": "qualification",
+          "slotId": "keyholder",
+          "status": "unknown",
+          "reviewed": false,
+          "validAnchors": 0
+        }
+      ]
+    },
+    {
+      "endpoint": "decide_semantic_cases",
+      "model": "clocked-1.0",
+      "credits": 7,
+      "results": [
+        {
+          "id": "clear",
+          "expected": "yes",
+          "actual": "yes",
+          "pass": true
+        },
+        {
+          "id": "conditional",
+          "expected": "conditional",
+          "actual": "conditional",
+          "pass": true
+        },
+        {
+          "id": "wrong_date",
+          "expected": "unknown",
+          "actual": "unknown",
+          "pass": true
+        },
+        {
+          "id": "insufficient_qualification",
+          "expected": "unknown",
+          "actual": "unknown",
+          "pass": true
+        },
+        {
+          "id": "conflict",
+          "expected": "conflict",
+          "actual": "conflict",
+          "pass": true
+        },
+        {
+          "id": "missing_willingness",
+          "expected": "unknown",
+          "actual": "unknown",
+          "pass": true
+        },
+        {
+          "id": "withdrawal",
+          "expected": "no",
+          "actual": "no",
+          "pass": true
+        },
+        {
+          "id": "wrong_person",
+          "expected": "unknown",
+          "actual": "unknown",
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "requests": 6,
+    "credits": 42,
+    "cashCharged": 0,
+    "semanticCasesPassed": 8,
+    "semanticCasesTotal": 8,
+    "scope": "Application adapter plus an eight-case Decide batch; fictional test inputs. Not a browser-to-provider end-to-end run or a broad accuracy estimate."
+  },
+  "accountVerification": {
+    "startingFreeCredits": 20000,
+    "freeCreditsUsed": 42,
+    "remainingFreeCredits": 19958,
+    "authorizedOverageUsd": 0,
+    "reservedCredits": 0,
+    "activity": "Six succeeded requests visible on Clocked account page after refresh. Dollar figures on trial activity are reference Production rates, not cash charges."
+  }
+}

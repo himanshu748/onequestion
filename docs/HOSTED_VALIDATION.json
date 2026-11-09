@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-09T09:07:22.064Z",
+  "url": "https://onequestion.tbud.workers.dev",
+  "hostingPlan": "Workers Free, $0 current plan verified in account dashboard",
+  "checks": {
+    "https": true,
+    "secureHttpOnlySameSiteCookie": true,
+    "visitorReadWriteDeleteIsolation": true,
+    "replyCoverage": [
+      3,
+      4
+    ],
+    "persistence": true,
+    "staleRevision409": true,
+    "crossOrigin403": true,
+    "guestProvider403": true,
+    "invalidOwnerCode403": true
+  },
+  "providerRequests": 0
+}

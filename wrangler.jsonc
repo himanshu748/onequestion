@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "onequestion",
+  "main": "cloud/worker.ts",
+  "compatibility_date": "2026-11-09",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "onequestion",
+      "database_id": "4fd1318b-9eec-46cb-9706-fad018d03928",
+      "migrations_dir": "cloud/migrations",
+    },
+  ],
+  "vars": { "LIVE_DAILY_REQUEST_LIMIT": "6" },
+  "observability": { "enabled": false },
+}
