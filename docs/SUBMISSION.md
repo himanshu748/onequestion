@@ -1,6 +1,6 @@
 # Clocked Build Challenge entry copy
 
-Prepared November 9, 2026. The official form has not been submitted.
+Submitted November 9, 2026. Clocked displayed **ENTRY SAVED**, last saved **9 Nov 2026 at 6:44 PM**. [Submission receipt](SUBMISSION_RECEIPT.json). The copy below is the submitted entry.
 
 ## Project and links
 
@@ -67,8 +67,10 @@ Evidence: [initial provider validation](LIVE_VALIDATION.json), [deployed API val
 
 Deadline: **November 10, 2026 at 11:59 p.m. America/New_York**, equivalent to **November 11 at 10:29 a.m. Asia/Kolkata**. Keep the demo and repository accessible through November 18. No changes were listed since the rules’ October 19 publication.
 
-## Remaining final action
+## Submission status
 
-Review the completed entry, supply the confirmed entrant contact details and authorize the binding rules agreement and final submission. The rules include permission for Rezolve.ai to feature the project and entrant name/GitHub handle. No entry has been submitted, no LinkedIn post has been made and no prize eligibility or award is established.
+The entrant explicitly authorized the contact details, official rules agreement and submission. The official authenticated form confirmed **ENTRY SAVED**. Best Overall App and Best Use of Decide, Extract, or Fill were selected; People’s Choice was not. No LinkedIn post was made. A saved entry does not establish eligibility, judging results or an award.
+
+The entry remains editable until the deadline. Keep the demo and repository accessible through November 18. No follow-up edit has been sent to Clocked after this receipt.
 
 The repository has no newly selected project license; the official rules require public access and respect for third-party licenses, but do not specify an open-source license. GitHub Actions could not start because of an account billing lock; local tests and the build passed. No billing changes were made.

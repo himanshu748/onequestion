@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-11-09T13:15:09.750226+00:00",
+  "event": "Clocked Build Challenge",
+  "project": "OneQuestion",
+  "status": "Official entry saved",
+  "confirmation": "ENTRY SAVED",
+  "lastSavedAsDisplayed": "9 Nov 2026 at 6:44 PM",
+  "confirmationDetail": "Entry saved. You can edit it until November 10, 11:59 p.m. Eastern Time.",
+  "entryForm": "https://clocked.rezolve.ai/challenge#submit",
+  "demo": "https://onequestion.tbud.workers.dev/demo/",
+  "repository": "https://github.com/himanshu748/onequestion",
+  "endpoints": [
+    "Decide",
+    "Extract",
+    "Fill"
+  ],
+  "awards": [
+    "Best Overall App",
+    "Best Use of Decide, Extract, or Fill"
+  ],
+  "peoplesChoice": false,
+  "rulesAgreement": "Accepted with explicit entrant authorization",
+  "evidence": "Observed the official authenticated entry form change from NEW ENTRY to ENTRY SAVED after submission.",
+  "limits": "Receipt confirms a saved entry; eligibility review, judging and awards remain unestablished. Private entrant contact details omitted from this public record."
+}
