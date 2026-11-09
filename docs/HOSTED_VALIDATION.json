@@ -16,5 +16,20 @@
     "guestProvider403": true,
     "invalidOwnerCode403": true
   },
-  "providerRequests": 0
+  "providerRequests": 0,
+  "browser": {
+    "desktop": "1440x1000",
+    "mobile": "360x800",
+    "previewIsolated": true,
+    "actualReplyAndReload": true,
+    "reducedMotion": true,
+    "noMobilePageOverflow": true,
+    "invalidOwnerCodeRejected": true
+  },
+  "repository": "https://github.com/himanshu748/onequestion",
+  "ci": {
+    "status": "blocked before any test step",
+    "reason": "GitHub account billing lock",
+    "run": "https://github.com/himanshu748/onequestion/actions/runs/42591564447"
+  }
 }

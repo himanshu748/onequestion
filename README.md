@@ -90,7 +90,7 @@ npm run build
 npm audit
 ```
 
-Tests cover the canonical reassignment, conditional and approval gates, a two-answer dependency, Unicode spans, CSV parsing and injection protection, schema errors, 400 reproducible small graphs compared with exhaustive enumeration, and the real HTTP entry point with SQLite restart persistence, stale saves, origin protection and untrusted imports. A real local Cloudflare Worker + D1 test also checks visitor isolation, owner access, workspace limits and oversized requests. Clocked adapter tests use synthetic responses. See [BUILD_CHECKLIST.md](BUILD_CHECKLIST.md) for actual check status and [docs/SUBMISSION.md](docs/SUBMISSION.md) for the prepared demo and submission copy.
+Tests cover the canonical reassignment, conditional and approval gates, a two-answer dependency, Unicode spans, CSV parsing and injection protection, schema errors, 400 reproducible small graphs compared with exhaustive enumeration, and the real HTTP entry point with SQLite restart persistence, stale saves, origin protection and untrusted imports. A real local Cloudflare Worker + D1 test also checks visitor isolation, owner access, workspace limits and oversized requests. Clocked adapter tests use synthetic responses. GitHub Actions is configured, but the first hosted CI run could not start because GitHub reported an account billing lock. The local checks above passed; no hosted CI pass is claimed. See [BUILD_CHECKLIST.md](BUILD_CHECKLIST.md) for actual check status and [docs/SUBMISSION.md](docs/SUBMISSION.md) for the prepared demo and submission copy.
 
 ## Architecture and limits
 

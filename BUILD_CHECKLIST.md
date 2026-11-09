@@ -30,7 +30,7 @@ A coordinator can create a supported event, add original volunteer messages, rev
 | Real Fill / Extract / Decide adapters | Passed, bounded | Six real requests; role/requirement compilation, two people analyzed, eight-case Decide batch; docs/LIVE_VALIDATION.json |
 | Semantic robustness benchmark | Not complete | Eight fictional cases passed once; no 60-case held-out evaluation, repeated trials or general accuracy estimate |
 | Browser-to-provider full review journey | Not tested | Browser local journeys and provider adapters were verified separately; no additional live calls beyond the six authorized |
-| Desktop and 360 px rendering | Passed | 1440×1000 and 360×800 browser inspection; no main-page overflow after repair |
+| Desktop and 360 px rendering | Passed | 1440×1000 and 360×800 local and deployed browser inspection; no main-page overflow after repair |
 | Keyboard and reduced motion | Passed | Mobile tab arrow navigation, dialog Escape and focus restoration; reduced-motion media emulation |
 | Accessibility automation | Passed for inspected screens | axe WCAG A/AA checks; zero violations on desktop (1440×1000) and mobile (360×800) current-plan screens after contrast, semantics and overflow fixes. This is not a full accessibility certification |
 | Types, tests, dependency audit and build | Passed | npm test: 12 tests, including 400 graph comparisons; strict TypeScript; npm audit: zero advisories; Vite build passes |
@@ -38,7 +38,8 @@ A coordinator can create a supported event, add original volunteer messages, rev
 | Cloudflare runtime and private sessions | Passed locally | Real Worker + local D1: two visitor sessions cannot read, mutate or delete each other’s events; stale saves, imports, owner access and body limits checked |
 | Public deployment | Passed | Workers Free ($0 current plan) verified in dashboard; HTTPS API checks in docs/HOSTED_VALIDATION.json; browser preview, actual reply and reload passed |
 | Deployed provider integration | Passed, bounded | Three additional real requests through deployed Worker: Fill, Extract, Decide; docs/HOSTED_LIVE_VALIDATION.json. One explicit sound skill classified conditional, requiring correction |
-| GitHub repository | In progress | User authorized public source and push; remote commit and CI checks follow |
+| GitHub repository | Passed | Public himanshu748/onequestion; main pushed; remote SHA matches local; homepage points to deployed app |
+| GitHub CI runner | Blocked externally | Run 42591564447 had zero steps: GitHub reports the account is locked due to a billing issue. No billing changes made; local 12 tests and build passed |
 | Recording, project license and submission | Pending | Prepared copy and demo sequence in docs/SUBMISSION.md; no contest entry submitted |
 
 ## Browser environment and evidence
