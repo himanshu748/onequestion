@@ -18,7 +18,7 @@ The key moment: three of four roles can be filled. Confirming one person's venue
 
 Fill proposes roles and explicit requirement text from the organizer's brief. Extract locates exact phrases in volunteer messages, including Unicode source positions. Decide classifies availability, willingness and qualifications with explicit unknown, conditional and conflict options. The coordinator reviews proposals; the exact local optimizer uses only accepted affirmative prerequisites. Manual coordinator approval cannot be manufactured by a model.
 
-These adapters are implemented and checked with synthetic HTTP responses. A separate live run made six successful requests using 42 free credits, covering all three core endpoints and eight labeled Decide cases (8/8 matched expectations). See LIVE_VALIDATION.json. A later deployed HTTPS API smoke test exercised all three endpoints in three additional requests; see HOSTED_LIVE_VALIDATION.json. One explicit sound skill was conservatively classified conditional, demonstrating why review remains required. A complete browser-to-provider recording and broader/repeated semantic evaluation remain unverified. The default example still uses hand-authored interpretations.
+These adapters are implemented and checked with synthetic HTTP responses. A separate live run made six successful requests using 42 free credits, covering all three core endpoints and eight labeled Decide cases (8/8 matched expectations). See LIVE_VALIDATION.json. A later deployed HTTPS API smoke test exercised all three endpoints in three additional requests; see HOSTED_LIVE_VALIDATION.json. One explicit sound skill was conservatively classified conditional, demonstrating why review remains required. Two further deployed-browser requests exercised Extract + Decide, then an anchored proposal was explicitly reviewed and survived reload; see BROWSER_LIVE_VALIDATION.json. A screen recording and broader/repeated semantic evaluation remain unmade. The default example still uses hand-authored interpretations.
 
 ## Demo sequence, about three minutes
 
@@ -27,7 +27,7 @@ These adapters are implemented and checked with synthetic HTTP responses. A sepa
 3. **1:00–1:35:** Record the fictional confirmation and reviewer. Show the actual roster become complete; reload to demonstrate persistence. State explicitly that the dataset is fictional and interpretations are hand-authored.
 4. **1:35–2:10:** Inspect source evidence and separate availability, willingness, qualification and coordinator approval. Reopen the access fact as unknown; coverage returns to three.
 5. **2:10–2:35:** Show the bounded pair analysis and a source-free roster CSV. Explain what the private backup contains.
-6. **2:35–3:00:** After live credentials are available, show a real Fill → Extract → Decide journey, review actual responses, and describe observed failures and measured results. A small adapter-level live validation is recorded, but this browser-to-provider recording remains unmade and must not be simulated as live.
+6. **2:35–3:00:** After live credentials are available, show a real Fill → Extract → Decide journey, review actual responses, and describe observed failures and measured results. A small adapter-level live validation is recorded, and browser analysis/review was verified, but its recording remains unmade and must not be simulated as live.
 
 ## Before submission
 

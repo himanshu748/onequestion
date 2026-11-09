@@ -1,0 +1,59 @@
+{
+  "at": "2026-11-09T09:22:55.871Z",
+  "url": "https://onequestion.tbud.workers.dev",
+  "providerRequests": 2,
+  "fictionalInputs": true,
+  "journey": [
+    "Owner session authorized privately through API",
+    "Clicked Analyze with Clocked in deployed browser",
+    "Real Extract and Decide completed",
+    "Seven source-backed proposals appeared unreviewed",
+    "Accepted availability proposal with reviewer and reason in browser",
+    "Reload preserved accepted fact and remaining six unreviewed proposals"
+  ],
+  "proposals": [
+    {
+      "label": "Is Cy available for the full event interval?",
+      "status": "yes",
+      "reviewed": true,
+      "validAnchors": 1
+    },
+    {
+      "label": "Is Cy willing to take Welcome?",
+      "status": "no",
+      "reviewed": false,
+      "validAnchors": 1
+    },
+    {
+      "label": "Is Cy willing to take Tickets?",
+      "status": "no",
+      "reviewed": false,
+      "validAnchors": 1
+    },
+    {
+      "label": "Is Cy willing to take AV?",
+      "status": "yes",
+      "reviewed": false,
+      "validAnchors": 1
+    },
+    {
+      "label": "Does Cy satisfy: independent sound operation?",
+      "status": "conditional",
+      "reviewed": false,
+      "validAnchors": 1
+    },
+    {
+      "label": "Is Cy willing to take Keyholder?",
+      "status": "yes",
+      "reviewed": false,
+      "validAnchors": 1
+    },
+    {
+      "label": "Does Cy satisfy: current venue keyholder access?",
+      "status": "conditional",
+      "reviewed": false,
+      "validAnchors": 1
+    }
+  ],
+  "limits": "Fill was tested separately through deployed HTTPS API; no full screen recording or broad/repeated accuracy claim."
+}

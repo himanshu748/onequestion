@@ -549,7 +549,9 @@ function App() {
               <span>
                 <span className="status-square" />
                 {w.demo
-                  ? "Fictional data · hand-authored interpretations"
+                  ? w.facts.some((f) => f.provenance === "clocked")
+                    ? "Fictional data · includes live Clocked proposals"
+                    : "Fictional data · hand-authored interpretations"
                   : "Coordinator-reviewed evidence"}
                 {live ? " · Clocked available" : " · Live Clocked disabled"}
               </span>
