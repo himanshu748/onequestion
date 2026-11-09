@@ -12,6 +12,7 @@ import {
   importWorkspace,
 } from "../server/actions";
 import { compileBrief, analyzePerson } from "../server/clocked";
+import { videoResponse } from "./video";
 
 export interface Env {
   DB: D1Database;
@@ -66,6 +67,11 @@ async function jsonBody(req: Request): Promise<unknown> {
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
+    if (url.pathname === "/demo/onequestion-demo.mp4")
+      return videoResponse(
+        req,
+        (r) => env.ASSETS.fetch(r as never) as unknown as Promise<Response>,
+      );
     if (!url.pathname.startsWith("/api/"))
       return env.ASSETS.fetch(req as never) as unknown as Promise<Response>;
     const headers = new Headers({

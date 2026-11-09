@@ -1,6 +1,6 @@
 # Hosted OneQuestion
 
-The [hosted app](https://onequestion.tbud.workers.dev) uses Cloudflare Workers Static Assets and D1. The original account dashboard showed **Free · $0 · Current plan** on November 9, 2026. The React client computes matching and question branches; the Worker validates changes, scopes stored events to their browser session and calls Clocked only after owner authorization. The original Express + SQLite server remains available for local use.
+The [hosted app](https://onequestion.tbud.workers.dev) uses Cloudflare Workers Static Assets and D1. The original account dashboard showed **Free · $0 · Current plan** on November 9, 2026. The 3.2 MB demonstration video is served through a Worker byte-range handler so browsers can seek; other static assets bypass the Worker. Video requests count toward the Free dynamic-request quota. The React client computes matching and question branches; the Worker validates changes, scopes stored events to their browser session and calls Clocked only after owner authorization. The original Express + SQLite server remains available for local use.
 
 ## Privacy and recovery
 

@@ -1,40 +1,74 @@
-# Clocked Build Challenge preparation
+# Clocked Build Challenge entry copy
 
-Prepared November 9, 2026. This document is a local draft, not a submitted entry.
+Prepared November 9, 2026. The official form has not been submitted.
 
-## Official constraints
+## Project and links
 
-The [official rules](https://clocked.rezolve.ai/build-challenge/rules) were retrieved November 9, 2026. They require a new working application built October 21–November 10, meaningful Clocked integration, a demo link or short video, and public source with setup instructions and development history. Submission closes November 10 at 11:59 p.m. America/New_York, equivalent to **November 11, 2026 at 10:29 a.m. Asia/Kolkata**. Entries remain reviewable through November 18. AI-assisted development is allowed. Eligibility, payment eligibility, affiliation and team consent must be verified by the entrant.
+Project name: **OneQuestion**
 
-The overall rubric allocates 25 points to usefulness, 30 to the core Clocked integration, 15 to useful additional endpoints, 20 to implementation/UX and 10 to explanation/reproducibility. The Decide/Extract/Fill category allocates 40 to depth, 30 to meaningful breadth, 20 to usefulness/execution and 10 to explanation/reproducibility. These facts come from the official rules; no score or winning probability is claimed.
+- Demo: https://onequestion.tbud.workers.dev/demo/
+- Working app: https://onequestion.tbud.workers.dev
+- Public source: https://github.com/himanshu748/onequestion
+- Write-up: https://github.com/himanshu748/onequestion#readme
 
-## Project overview
+Awards: **Best Overall App** and **Best Use of Decide, Extract, or Fill**. Endpoints: **Decide, Extract, Fill**. People’s Choice is not selected; it requires a separate authorized LinkedIn post.
 
-OneQuestion helps a small-event coordinator decide which missing answer is worth chasing. It turns volunteer messages into inspectable prerequisites, builds an eligible draft roster, and shows the exact whole-roster consequences of both possible answers to a clarification.
+## Overview
 
-The key moment: three of four roles can be filled. Confirming one person's venue access unlocks a reassignment chain and fills the fourth role. Previewing that answer changes nothing in the actual plan. Recording and reviewing the real reply changes the evidence, and then the plan.
+1,537 / 2,000 characters
 
-## Endpoint explanation
+A volunteer coordinator has four people, four roles, and a roster that only fills three. Another reminder to everyone won’t explain the gap. OneQuestion shows which specific missing answer could change the whole plan.
 
-Fill proposes roles and explicit requirement text from the organizer's brief. Extract locates exact phrases in volunteer messages, including Unicode source positions. Decide classifies availability, willingness and qualifications with explicit unknown, conditional and conflict options. The coordinator reviews proposals; the exact local optimizer uses only accepted affirmative prerequisites. Manual coordinator approval cannot be manufactured by a model.
+Paste the organizer’s brief and volunteer messages. Review availability, willingness, qualifications and approval as separate facts. The workbench builds an eligible draft, then previews both answers to a clarification without changing saved evidence. In the fictional four-person example, confirming Cy’s venue access unlocks a chain of three reassignments and fills the fourth role. Confirming Dee’s sound skill alone does not improve coverage. Recording an actual reply updates the saved facts and roster; a preview never does.
 
-These adapters are implemented and checked with synthetic HTTP responses. A separate live run made six successful requests using 42 free credits, covering all three core endpoints and eight labeled Decide cases (8/8 matched expectations). See LIVE_VALIDATION.json. A later deployed HTTPS API smoke test exercised all three endpoints in three additional requests; see HOSTED_LIVE_VALIDATION.json. One explicit sound skill was conservatively classified conditional, demonstrating why review remains required. Two further deployed-browser requests exercised Extract + Decide, then an anchored proposal was explicitly reviewed and survived reload; see BROWSER_LIVE_VALIDATION.json. A screen recording and broader/repeated semantic evaluation remain unmade. The default example still uses hand-authored interpretations.
+Clocked Fill proposes editable roles and requirements, Extract anchors evidence to exact source text, and Decide proposes explicit yes/no/unknown/conditional/conflict classifications. People review the proposals before they enable assignments. An exact matching engine computes the roster consequences rather than asking a model to invent an allocation.
 
-## Demo sequence, about three minutes
+The deployed app includes private browser workspaces, persistent storage, paired-question analysis, a source-free roster CSV and private backup import/export. The example uses fictional data and hand-authored starting interpretations; the demo separately shows real Clocked behavior. The supported scope is one interval, up to 12 people and eight roles. It does not send messages or confirm that a volunteer accepted an assignment.
 
-1. **0:00–0:25:** Show the original volunteer messages and three filled roles. Explain the coordinator's uncertainty, not a generic scheduling problem.
-2. **0:25–1:00:** Compare Cy's access question and Dee's AV question. Preview confirmation and denial. Show the unchanged actual state and the exact reassignment.
-3. **1:00–1:35:** Record the fictional confirmation and reviewer. Show the actual roster become complete; reload to demonstrate persistence. State explicitly that the dataset is fictional and interpretations are hand-authored.
-4. **1:35–2:10:** Inspect source evidence and separate availability, willingness, qualification and coordinator approval. Reopen the access fact as unknown; coverage returns to three.
-5. **2:10–2:35:** Show the bounded pair analysis and a source-free roster CSV. Explain what the private backup contains.
-6. **2:35–3:00:** After live credentials are available, show a real Fill → Extract → Decide journey, review actual responses, and describe observed failures and measured results. A small adapter-level live validation is recorded, and browser analysis/review was verified, but its recording remains unmade and must not be simulated as live.
+## The integration
 
-## Before submission
+2,345 / 3,000 characters
 
-- Completed: authorized sign-in, redeemed CLOCKEDHACKATHON for 20,000 total free credits, created a private application key, and performed six live requests. Overage remained $0. Further evaluation needs its own agreed request/credit budget; do not add billing.
-- Run difficult semantic cases: conditional availability, ambiguous dates, conflicting updates, wrong-event messages, explicit withdrawal, unsupported qualifications and missing willingness. Report unsupported confirmations separately from missed clear confirmations. Eight scoped live Decide cases passed once; this is not a general accuracy result or held-out benchmark.
-- Verify the [public repository](https://github.com/himanshu748/onequestion), development history and [hosted app](https://onequestion.tbud.workers.dev). Project license selection remains open.
-- Produce a real screen recording, public demo/video, required team details and the final submission form. Use Deepgram exclusively if generated narration is authorized and needed. No generated narration or contest submission has occurred.
-- Select Best Overall App and the Decide/Extract/Fill category after verifying the actual integration. Optional People’s Choice requires an authorized public LinkedIn post and official mention; no outreach or post has been made.
+Fill turns an organizer’s brief into proposed role names and explicit requirement text, and flags unsupported scheduling constraints. Its output populates editable role fields. The coordinator checks capacities and maps qualifications to the correct roles; extraction does not silently approve that mapping.
 
-Protect/Guard/Inspect and Verify/Compare/Rerank categories are not pursued in this implementation. Their endpoints were deferred because they do not yet add a verified core capability. Unnecessary calls would not earn rubric credit.
+Extract and Decide operate on one volunteer’s immutable source snapshot plus the dated event requirements. Extract returns exact phrases and Unicode code-point positions. OneQuestion validates those positions against the original text. Decide classifies each prerequisite independently as yes, no, unknown, conditional or conflict. Availability, role willingness, qualification and coordinator approval are distinct gates. Coordinator approval remains manual.
+
+These outputs change the evidence inspector and the planning graph. New proposals remain unreviewed. An affirmative model proposal can only be accepted with a valid same-person source anchor; a correction is explicitly labeled coordinator-provided and records a reviewer and reason. Adding a new message invalidates earlier reviews. Failed or stale analyses do not replace saved evidence.
+
+Only reviewed affirmative facts enable an edge in an exact min-cost maximum matching calculation. The engine maximizes filled roles, then minimizes changes to existing assignments. It evaluates both answer branches for single questions and all four branches for bounded pairs. Classification confidence is never treated as a probability of a person’s future reply.
+
+The repository includes synthetic adapter regression tests and separate evidence for real Fill, Extract and Decide calls. A deployed-browser test showed seven real proposals, explicitly accepted one anchored fact, and preserved it after reload. One clear sound-operation statement was conservatively classified conditional, so review and correction are necessary. The initial eight-case Decide batch matched all eight labels once; this is not a general accuracy estimate.
+
+Provider credentials stay server-side. Hosted live calls require a private owner code and share a six-request daily cap; the public example and manual planning need no key. The app is hosted on Cloudflare Workers Free with private D1 workspaces. A local Express/SQLite option and instructions for using a developer’s own Clocked key are included.
+
+## What you learned
+
+1,455 / 2,000 characters
+
+The question with the most obvious local connection is not always the question that changes the roster. In the example, one qualification unlocks a whole reassignment chain; another seemingly useful answer adds no coverage. Calculating both complete outcomes makes that difference visible without inventing a probability for a human’s answer.
+
+Source positions also matter more than a plausible explanation. We validate Extract’s Unicode offsets against the original text, keep an immutable analysis snapshot, and require fresh review when new information arrives. A model’s interpretation, a coordinator’s correction and a hypothetical answer have different authority and remain visibly separate.
+
+Live testing exposed a useful failure: an explicit sound-operation qualification was classified conditional. The app preserves that uncertainty instead of silently making an assignment. Review is a required interaction rather than a decorative confidence score.
+
+Deployment required a separate trust boundary. The local single-user server became a session-scoped Cloudflare Worker with persistent D1 storage, optimistic revisions and owner-only provider access. The matching engine was changed to min-cost maximum matching, with 400 bounded graphs checked against exhaustive enumeration. Thirteen local tests and the build passed. GitHub’s CI runner could not start because of an account billing lock; no hosted CI pass or production-readiness claim is made.
+
+## Demonstration and evidence
+
+The 93-second silent video is an actual browser capture with chapter cards and idle pauses removed. It shows previously generated real Extract/Decide proposals, then a separate hand-authored fictional roster, both clarification previews, a fictional actual reply, reload persistence and a roster CSV. A real Fill request is made during the recording, returning three editable roles and one qualification requirement. It used 10 free credits; the hosted daily counter reached six. No additional provider requests are needed to watch the video or use the public example.
+
+The original canonical example remains hand-authored. Original messages are fictional in all recorded scenarios. The video does not show a new Extract/Decide request, and it does not claim a broad accuracy result. The recorded CSV contains roles and names, with no source text.
+
+Evidence: [initial provider validation](LIVE_VALIDATION.json), [deployed API validation](HOSTED_LIVE_VALIDATION.json), [browser analysis/review validation](BROWSER_LIVE_VALIDATION.json), [demo validation](DEMO_VALIDATION.json).
+
+## Official requirements checked
+
+[Official rules](https://clocked.rezolve.ai/build-challenge/rules) and [entry form](https://clocked.rezolve.ai/challenge#submit) were rechecked November 9. The form allows 2,000 characters for the overview, 3,000 for the integration and 2,000 for lessons. It requires a demo link or video, public source with setup and real development history, endpoints and integration details, award selections, team contact details and agreement to the rules.
+
+Deadline: **November 10, 2026 at 11:59 p.m. America/New_York**, equivalent to **November 11 at 10:29 a.m. Asia/Kolkata**. Keep the demo and repository accessible through November 18. No changes were listed since the rules’ October 19 publication.
+
+## Remaining final action
+
+Review the completed entry, supply the confirmed entrant contact details and authorize the binding rules agreement and final submission. The rules include permission for Rezolve.ai to feature the project and entrant name/GitHub handle. No entry has been submitted, no LinkedIn post has been made and no prize eligibility or award is established.
+
+The repository has no newly selected project license; the official rules require public access and respect for third-party licenses, but do not specify an open-source license. GitHub Actions could not start because of an account billing lock; local tests and the build passed. No billing changes were made.

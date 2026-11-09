@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-09",
+  "capture": "Actual deployed browser interactions using Playwright native video at 1920x1080, 60 fps",
+  "fictionalInputs": true,
+  "startingRosterInterpretations": "hand-authored fixtures",
+  "extractDecideSegment": "Previously generated real provider proposals; one accepted availability fact survived reload",
+  "recordedFill": {
+    "httpStatus": 200,
+    "providerRequests": 1,
+    "roles": [
+      "Welcome volunteer",
+      "Tickets volunteer",
+      "AV volunteer"
+    ],
+    "requirements": [
+      "must be able to operate sound independently"
+    ],
+    "unsupported": false,
+    "credits": 10,
+    "model": "clocked-1.0"
+  },
+  "manualJourney": {
+    "previewCoverage": [
+      3,
+      4,
+      3
+    ],
+    "actualReplyCoverage": 4,
+    "reloadPersistence": true,
+    "rosterCsvHasSourceText": false
+  },
+  "hostedRequestsReservedToday": 6,
+  "editing": "Idle pauses removed; no synthetic provider responses or UI states inserted",
+  "narration": "None",
+  "video": {
+    "url": "https://onequestion.tbud.workers.dev/demo/onequestion-demo.mp4",
+    "codec": "H.264",
+    "width": 1920,
+    "height": 1080,
+    "fps": 60,
+    "durationSeconds": 92.933333,
+    "bytes": 3311073
+  },
+  "idleCutsSourceSeconds": [
+    [
+      15.433,
+      22.067
+    ],
+    [
+      48.9,
+      92.5
+    ],
+    [
+      114.217,
+      164.567
+    ]
+  ],
+  "browser": {
+    "playbackAdvances": true,
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      360,
+      800
+    ],
+    "mobilePageOverflow": false,
+    "keyboardLinksReachable": true,
+    "consoleErrors": 0,
+    "seekTo31Seconds": true
+  },
+  "dailyQuotaCheck": {
+    "httpStatus": 429,
+    "providerRequests": 0
+  },
+  "byteRange": {
+    "httpStatus": 206,
+    "range": "bytes=0-1023",
+    "returnedBytes": 1024,
+    "matchesLocalFile": true
+  }
+}

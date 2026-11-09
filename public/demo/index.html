@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Watch OneQuestion turn a missing volunteer answer into a complete, evidence-backed roster draft.">
+  <title>OneQuestion — the demo</title>
+  <style>
+    :root{color-scheme:light;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#20252d;background:#f7f6f2}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:32px 28px 60px}nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-bottom:38px}a{color:#304bd0;text-underline-offset:4px}a:focus-visible,video:focus-visible{outline:3px solid #304bd0;outline-offset:5px}.brand{font-weight:750;font-size:22px;letter-spacing:-1px;color:#20252d;text-decoration:none}.brand b{display:inline-grid;place-items:center;width:30px;height:30px;margin-right:8px;border-radius:7px;background:#304bd0;color:white}.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#626873;font-weight:700}h1{font-size:clamp(36px,6vw,62px);letter-spacing:-2.5px;line-height:1.08;max-width:850px;margin:18px 0}h1 em{font-family:Georgia,serif;font-weight:500;color:#304bd0}.intro{max-width:680px;line-height:1.7;color:#555d66;font-size:17px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0}.button{padding:12px 20px;border:1px solid #dedfdc;border-radius:8px;background:white;text-decoration:none;font-weight:650;font-size:14px}.primary{background:#304bd0;border-color:#304bd0;color:white}.film{margin:32px 0 10px;padding:8px;border:1px solid #dedfdc;border-radius:14px;background:white;box-shadow:0 14px 40px #20252d08}video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:8px;background:#20252d}.caption{font-size:12px;color:#626873;line-height:1.6;margin:12px 4px 30px}.columns{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;border-top:1px solid #dedfdc;padding-top:28px}h2{font-size:20px;letter-spacing:-.5px}ol{padding-left:22px}li{padding:0 0 13px 6px;line-height:1.6;font-size:14px}p{line-height:1.65}aside p{font-size:14px;color:#555d66}.note{padding:16px 18px;border-radius:10px;background:#eeede7;font-size:13px;color:#555d66}footer{border-top:1px solid #dedfdc;padding-top:22px;margin-top:30px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;color:#626873;font-size:12px}@media(max-width:700px){main{padding:24px 18px 40px}nav{padding-bottom:24px}.columns{grid-template-columns:1fr;gap:12px}.film{padding:4px;border-radius:10px}h1{letter-spacing:-1.5px}.intro{font-size:16px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav aria-label="Main navigation"><a class="brand" href="/"><b>?</b>OneQuestion.</a><a href="https://github.com/himanshu748/onequestion">Source &amp; setup ↗</a></nav>
+  <p class="eyebrow">A workbench for small-event coordinators</p>
+  <h1>Find the answer that<br><em>changes the whole plan.</em></h1>
+  <p class="intro">Four people. Four roles. Only three can be filled. OneQuestion shows which missing answer could unlock the last role—and exactly who would move.</p>
+  <div class="actions"><a class="button primary" href="/">Try the four-person example →</a><a class="button" href="https://github.com/himanshu748/onequestion#readme">Read how it works</a></div>
+  <div class="film"><video controls playsinline preload="metadata" poster="/demo/poster.png" aria-label="OneQuestion product demonstration"><source src="/demo/onequestion-demo.mp4" type="video/mp4">Your browser cannot play this video. <a href="/demo/onequestion-demo.mp4">Download the demonstration</a>.</video></div>
+  <p class="caption">Actual browser interactions, with chapter cards and edited pacing. Fictional volunteers; hand-authored starting interpretations are labeled separately from real Clocked proposals. Silent video; the walkthrough below provides a text alternative.</p>
+  <div class="columns">
+    <section aria-labelledby="walkthrough"><h2 id="walkthrough">The walkthrough</h2><ol>
+      <li><strong>Keep the evidence in view.</strong> Inspect previously generated real Clocked proposals, their original source phrases, and the distinction between reviewed and unresolved facts.</li>
+      <li><strong>Ask what changes coverage.</strong> In the fictional example, Cy’s venue-access answer previews four filled roles and three reassignments. Dee’s sound qualification alone still fills three. A preview leaves the saved plan unchanged.</li>
+      <li><strong>Record the actual answer.</strong> Enter a clearly fictional confirmation and reviewer. The saved draft reaches four roles and survives reload.</li>
+      <li><strong>Share the roster, keep the sources private.</strong> The roster CSV omits source messages and internal fact history. A private backup contains both.</li>
+      <li><strong>Use Clocked to propose, then review.</strong> Fill proposes editable roles and explicit requirements. Extract anchors exact phrases; Decide proposes separate prerequisite states. Only reviewed affirmative evidence enables assignments.</li>
+    </ol></section>
+    <aside aria-labelledby="mechanism"><h2 id="mechanism">Language into evidence. Evidence into a plan.</h2><p>Clocked Fill, Extract and Decide provide structured proposals. An exact min-cost maximum matching engine computes eligibility, coverage and reassignment consequences.</p><p>Unknown, conditional, conflicting and unreviewed facts do not establish eligibility. A model’s confidence is never treated as a probability that a person will reply “yes.”</p><p class="note">The public example and manual planning need no account. Hosted live analysis requires a private owner code to protect free credits. Workspaces are private to a browser session. One interval, up to 12 volunteers and eight roles.</p><p><a href="https://github.com/himanshu748/onequestion/blob/main/docs/BROWSER_LIVE_VALIDATION.json">Inspect the live integration evidence ↗</a></p></aside>
+  </div>
+  <footer><span>Built for the Clocked Build Challenge · November 2026</span><span>An eligible draft is not confirmation of attendance.</span></footer>
+</main>
+</body>
+</html>

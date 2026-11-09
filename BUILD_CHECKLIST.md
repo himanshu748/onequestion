@@ -33,14 +33,15 @@ A coordinator can create a supported event, add original volunteer messages, rev
 | Desktop and 360 px rendering | Passed | 1440×1000 and 360×800 local and deployed browser inspection; no main-page overflow after repair |
 | Keyboard and reduced motion | Passed | Mobile tab arrow navigation, dialog Escape and focus restoration; reduced-motion media emulation |
 | Accessibility automation | Passed for inspected screens | axe WCAG A/AA checks; zero violations on desktop (1440×1000) and mobile (360×800) current-plan screens after contrast, semantics and overflow fixes. This is not a full accessibility certification |
-| Types, tests, dependency audit and build | Passed | npm test: 12 tests, including 400 graph comparisons; strict TypeScript; npm audit: zero advisories; Vite build passes |
+| Types, tests, dependency audit and build | Passed | npm test: 13 tests, including 400 graph comparisons; strict TypeScript; npm audit: zero advisories; Vite build passes |
 | Independent users and external qualifications | Not tested | No usability study or real credential verification |
 | Cloudflare runtime and private sessions | Passed locally | Real Worker + local D1: two visitor sessions cannot read, mutate or delete each other’s events; stale saves, imports, owner access and body limits checked |
 | Public deployment | Passed | Workers Free ($0 current plan) verified in dashboard; HTTPS API checks in docs/HOSTED_VALIDATION.json; browser preview, actual reply and reload passed |
 | Deployed provider integration | Passed, bounded | Three additional real requests through deployed Worker: Fill, Extract, Decide; docs/HOSTED_LIVE_VALIDATION.json. One explicit sound skill classified conditional, requiring correction |
 | GitHub repository | Passed | Public himanshu748/onequestion; main pushed; remote SHA matches local; homepage points to deployed app |
 | GitHub CI runner | Blocked externally | Run 42591564447 had zero steps: GitHub reports the account is locked due to a billing issue. No billing changes made; local 12 tests and build passed |
-| Recording, project license and submission | Pending | Prepared copy and demo sequence in docs/SUBMISSION.md; no contest entry submitted |
+| Recorded demo and final field copy | Passed locally | 93-second H.264 1920×1080 60 fps browser video; actual Fill request; four video thumbnails inspected; all form text below limits; public playback and seek-to-31-seconds passed after deployment; exact HTTP 206 prefix bytes checked |
+| Project license and contest submission | Pending | License not selected; final rules agreement and submission require the entrant’s authorization |
 
 ## Browser environment and evidence
 
@@ -50,4 +51,4 @@ Checked page title and URL, meaningful rendered content, absence of a framework 
 
 ## Material limits
 
-The local server is single-user. Hosted storage is private to an HttpOnly browser cookie, with no user-account login, cross-device recovery or collaboration. Live access requires an owner code and has a six-request daily cap. It supports one shared interval, up to 12 people and 8 slots. Scope is intentionally bounded; unsupported schedules require another model. Clocked errors and stale results never become affirmative evidence. No automatic messaging, external approval, calendar writes or provider calls occur during previews. Paid overage was not enabled. Hosted smoke testing used five additional free provider requests within the six-per-day cap. Further evaluation beyond this bounded check needs its own budget.
+The local server is single-user. Hosted storage is private to an HttpOnly browser cookie, with no user-account login, cross-device recovery or collaboration. Live access requires an owner code and has a six-request daily cap. It supports one shared interval, up to 12 people and 8 slots. Scope is intentionally bounded; unsupported schedules require another model. Clocked errors and stale results never become affirmative evidence. No automatic messaging, external approval, calendar writes or provider calls occur during previews. Paid overage was not enabled. Hosted smoke testing and recording used six additional free provider requests within the six-per-day cap. Further evaluation beyond this bounded check needs its own budget.
