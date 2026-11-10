@@ -37,3 +37,7 @@ Implemented demo typographic hero, restrained original question schematic, numbe
 ### 10 Nov, 03:05 PM IST — 2. Question and answer interaction
 
 Added presentation-only workbench skin: larger question hierarchy, tactile answer tiles, stronger selected/focus boundaries, short 220–260 ms state transitions, redesigned existing empty/error/dialog treatments. No event handlers, API contracts, data or visible factual copy changed. Reduced-motion disables all transitions.
+
+### 10 Nov, 03:06 PM IST — 3. Result and evidence view
+
+Refined coverage hierarchy, progress bars, roster cards, source quotations and fact review spacing/type. Existing conditional/unreviewed/reviewed distinctions, data, source text and actions untouched. Existing reassignment animation remains finite (260 ms); no chart or behavior added.
