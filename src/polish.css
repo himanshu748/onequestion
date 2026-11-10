@@ -299,3 +299,178 @@
     scroll-behavior: auto !important;
   }
 }
+/* Readability on the example's first plan screen, without a layout redesign. */
+.event-meta,
+.mode-strip,
+.mode-strip .text-button,
+.coverage-description > span,
+.coverage-description strong,
+.coverage-bar .pill,
+.section-heading p,
+.section-heading button,
+.mobile-tabs button,
+.panel-top h3,
+.panel-top > span,
+.source-summary,
+.source-byline strong,
+.source-byline small,
+.person-chips > button,
+.evidence-note p,
+.assigned-person,
+.assigned-person small,
+.unassigned,
+.unassigned small,
+.role-number,
+.role-foot,
+.question-eyebrow,
+.question-eyebrow > span,
+.question-card > p,
+.question-card > .text-button,
+.question-card > .primary,
+.question-card > .secondary,
+.question-footnote,
+.outcome-buttons button > span,
+.outcome-buttons button + button > span,
+.draft-note,
+.unassigned-list > span,
+.unassigned-list > button,
+.unassigned-list > button > span:last-child,
+.unassigned-list p,
+.main-footer,
+.main-footer > span,
+.header-actions button,
+.event-heading > .event-meta,
+.event-heading .eyebrow {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.mode-strip,
+.section-heading,
+.coverage-bar {
+  flex-wrap: wrap;
+}
+.mode-strip > span {
+  min-width: 0;
+  line-height: 1.8;
+}
+.mode-strip .text-button {
+  min-height: 44px;
+}
+.source-panel blockquote {
+  font-size: 16px;
+}
+.role-foot {
+  align-items: flex-start;
+  min-height: 56px;
+  overflow-wrap: anywhere;
+}
+.assigned-person small,
+.unassigned small {
+  margin-top: 6px;
+}
+.assigned-person,
+.unassigned {
+  align-items: flex-start;
+}
+.question-eyebrow {
+  flex-wrap: wrap;
+}
+.outcome-buttons button {
+  padding: 12px 10px;
+}
+.outcome-buttons button > span {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.outcome-buttons small {
+  font-size: 14px;
+}
+.question-card > .primary,
+.question-card > .secondary {
+  min-height: 44px;
+}
+.main-footer {
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.question-card h3 {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.coverage-description > span {
+  color: #59616b;
+}
+.person-chips > button.selected {
+  color: #303d75;
+}
+.welcome .mini-plan.after > .overline {
+  font-size: 14px;
+}
+.welcome .mini-question {
+  order: 0;
+}
+.welcome .intro-flow > .mini-plan.after {
+  order: 0;
+}
+.welcome .intro-flow .flow-arrow {
+  order: 0;
+}
+.welcome .mini-avatars .empty-avatar {
+  font-size: 17px;
+}
+.topbar .breadcrumb strong {
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  .event-heading .eyebrow {
+    font-size: 14px;
+  }
+  .event-meta {
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+  .header-actions {
+    flex-wrap: wrap;
+  }
+  .header-actions button {
+    flex: 1;
+    min-height: 44px;
+  }
+  .coverage-bar {
+    align-items: flex-start;
+  }
+  .coverage-description {
+    flex: 1;
+    min-width: 150px;
+  }
+  .coverage-bar .pill {
+    margin-left: 0;
+  }
+  .main-footer {
+    font-size: 14px;
+  }
+  .welcome .intro-flow .mini-question {
+    display: block;
+  }
+  .welcome .intro-flow .mini-plan.after > .overline {
+    font-size: 14px;
+  }
+  .event-heading .event-meta {
+    font-size: 14px;
+  }
+  .roster-card {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .unassigned-list > button {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .section-heading button {
+    font-size: 14px;
+  }
+  .mode-strip {
+    align-items: flex-start;
+  }
+}
+.welcome .illustration-title{font-size:14px;font-weight:400;margin:0;line-height:1.7}

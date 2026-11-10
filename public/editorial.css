@@ -1034,3 +1034,31 @@ nav,
     font-size: 14px;
   }
 }
+.source-position summary,
+.review-page .source-position summary {
+  min-height: 44px;
+  padding: 8px 0;
+}
+.recorded-output summary {
+  min-height: 44px;
+}
+/* Reserve the player geometry; defer offscreen native-control rendering. */
+.film {
+  position: relative;
+  aspect-ratio: 16/9;
+  content-visibility: auto;
+}
+.film video {
+  position: absolute;
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: contain;
+}
+@media (max-width: 700px) {
+  .film video {
+    inset: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+  }
+}

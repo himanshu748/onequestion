@@ -67,3 +67,19 @@ Added the standard MIT LICENSE with 2026 Himanshu Kumar copyright, as explicitly
 Retained static demo/archive visual direction and first welcome screen. Removed the earlier broad workbench question/result skin to respect the narrowed scope. Raised small grey metadata on the two static pages and first app screen to at least 14 px, with dark AA-oriented colors. Removed the duplicate header live-access action; the sidebar action remains. Consolidated six repeated archive awaiting-review notes into one section note. Quote offsets moved into native keyboard-accessible details, leaving plain highlighted quotes. Existing silent-video captions already have 13 cues and remain byte-unchanged. Added OG card and shared existing favicon; no new product claims.
 
 Preview preparation uses a separate onequestion-ui-polish Worker and D1 database (be5e48c2-c380-4b10-ae16-439f5e724d22), with no Clocked secrets and zero configured provider allowance. Original production database and Worker configuration unchanged.
+
+## 10 Nov, 03:24 PM IST — preview verification and performance investigation
+
+Isolated preview deployed at https://onequestion-ui-polish.tbud.workers.dev (production unchanged). Desktop 1440, laptop 1280 and mobile 390 demo/review/welcome checks passed: no horizontal overflow, visible small text at least 14 px, native disclosure keyboard access, preserved four-step path. In-example archive matches all seven saved labels/quotes, makes zero provider-route requests and leaves the complete saved workspace byte-equivalent. Keyboard confirmation preview reaches 4/4, return remains 3/4; reduced-motion computed styles have no active animations/transitions. Anonymous Analyze, Fill and deliberately wrong token return 403; video plays with 13 caption cues and HTTP 206 range support. Browser receipt retained locally.
+
+An initial QA request used the wrong response nesting/revision and brief field; it produced a harness failure, not provider access. Corrected to the actual API contract and reran successfully. A local setup request previously returned 400 while the preview DB identifier was changed; local migrations were applied to that new isolated identifier.
+
+All 14 tests initially passed after implementation (real D1 7.606 seconds). A repeat under browser workload passed D1 but the HTTP test exceeded its 5-second server-start readiness budget: 13 passed, 1 failed. No test or runtime code changed to mask this; an idle rerun is pending.
+
+Mobile Lighthouse 12.8.2: review 100 performance / 100 accessibility, CLS 0. Initial demo 61 / 100, CLS 0; trace reports zero page scripts and a long unattributable task during offscreen native-video setup. Testing content-visibility with an explicit reserved player ratio; controls, video preload and caption data unchanged. No production approval is implied by a preview.
+
+## 10 Nov, 03:26 PM IST — backend addendum accepted
+
+Backend items 1–7 take priority, then optional pure-move extraction only before 11 Nov ~6:30 AM IST. Created explicit local fallback-a0029cf tag at confirmed production base; existing ui-polish ancestry already starts there. No tag or branch pushed.
+
+Prior verification checkpoint: complete 14-test suite passed with test concurrency 1, including HTTP (2.288 seconds) and real D1 (5.745 seconds). No timeout budgets or runtime logic changed to obtain this pass. Preview review Lighthouse 100/100, welcome 94/98 (heading-order diagnostic); fixed welcome section heading semantics without changing its text. Preview-only player geometry/content-visibility adjustment awaits final retest after backend.

@@ -434,9 +434,9 @@ function App() {
             <div className="welcome-illustration">
               <div className="illustration-label">
                 <span className="pill">THE DIFFERENCE ONE ANSWER MAKES</span>
-                <span className="muted smalltext">
+                <h2 className="muted smalltext illustration-title">
                   A quick look at the example
-                </span>
+                </h2>
               </div>
               <div className="intro-flow">
                 <div className="mini-plan">

@@ -42,7 +42,7 @@ A coordinator can create a supported event, add original volunteer messages, rev
 | GitHub CI runner | Blocked externally | Run 42591564447 had zero steps: GitHub reports the account is locked due to a billing issue. No billing changes made; local 12 tests and build passed |
 | Recorded demo and final field copy | Passed locally | 93-second H.264 1920×1080 60 fps browser video; actual Fill request; four video thumbnails inspected; all form text below limits; public playback and seek-to-31-seconds passed after deployment; exact HTTP 206 prefix bytes checked |
 | Contest submission | Confirmed saved | Explicit entrant authorization; Clocked displayed ENTRY SAVED on November 9 at 6:44 PM; docs/SUBMISSION_RECEIPT.json |
-| Project license | Not selected | No project license selected on the entrant’s behalf; the contest requires public source access, not a specified open-source license |
+| Project license | MIT on preview branch | Explicit entrant request on 10 Nov; LICENSE added on ui-polish, awaiting production/main approval |
 
 ## Browser environment and evidence
 

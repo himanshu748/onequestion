@@ -77,4 +77,4 @@ The new recorded review is an immutable keyless presentation of known fictional 
 
 ## Gated actions
 
-The entrant’s exact `submit` approved this form save and the Phase 5 public-file commit/push. LinkedIn publication was not approved and remains gated. No further form edit is planned. The repository’s license has not been changed; no billing changes or spending are authorized.
+The entrant’s exact `submit` approved this form save and the Phase 5 public-file commit/push. LinkedIn publication was not approved and remains gated. No further form edit is planned. The entrant subsequently requested MIT licensing on the ui-polish branch. The saved entry text above remains unchanged; no new form save is proposed. No billing changes or spending are authorized.
