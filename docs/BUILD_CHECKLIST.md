@@ -61,3 +61,8 @@ Checked page title and URL, meaningful rendered content, absence of a framework 
 ## Material limits
 
 The local server is single-user. Hosted storage is private to an HttpOnly browser cookie, with no user-account login, cross-device recovery or collaboration. Live access requires an owner code and has a six-request daily cap. It supports one shared interval, up to 12 people and 8 slots. Scope is intentionally bounded; unsupported schedules require another model. Clocked errors and stale results never become affirmative evidence. No automatic messaging, external approval, calendar writes or provider calls occur during previews. Paid overage was not enabled. Hosted smoke testing and recording used six additional free provider requests within the six-per-day cap. Further evaluation beyond this bounded check needs its own budget.
+
+
+## ui-polish backend quality preview — 10 Nov 2026
+
+All 19 current keyless tests, strict typecheck and build passed from a disposable clone after removing dist; pretest rebuilt the assets. Both real local Worker/D1 scenarios passed. Mobile Lighthouse: demo 100/100, recorded review 100/100, app welcome 95/100 (performance/accessibility), all CLS 0. Preview only; production/main and the saved Clocked entry remain unchanged. [Item-by-item verification and gates](agent-runs/ui-polish-log.md).

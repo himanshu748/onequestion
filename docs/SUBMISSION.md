@@ -73,7 +73,7 @@ Hard deadline: **11 Nov 2026, 10:29 AM IST**. Working target: **11 Nov, 8:00 AM 
 
 The new recorded review is an immutable keyless presentation of known fictional 9 Nov QA data, with the original same-person Extract spans, saved Decide labels, original screenshot and provenance links. Its Fill record is the saved request shown in the video. There are no new model outputs. The first adapter run and later browser run classified sound skill differently; that variation is disclosed. No broad accuracy estimate is claimed.
 
-`npm test` passed all 14 tests, including the real local Worker + D1 test (no timeout). `npm run build` passed. The new regression cross-checks the recorded classifications, review states and Unicode spans against original validation records. No green CI claim is made. See [agent log](CLOCKED_AGENT_LOG.md) for timestamped actions and current browser checks.
+The saved-entry verification passed 14 tests on 10 Nov, including the real local Worker + D1 test (no timeout). The later ui-polish branch passes 19 keyless tests; see [its run log](agent-runs/ui-polish-log.md). `npm run build` passed. The new regression cross-checks the recorded classifications, review states and Unicode spans against original validation records. No green CI claim is made. See [agent log](CLOCKED_AGENT_LOG.md) for timestamped actions and current browser checks.
 
 ## Gated actions
 
