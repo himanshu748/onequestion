@@ -1,8 +1,8 @@
 # Clocked Build Challenge — saved entry
 
-Updated entry saved **10 Nov 2026, 2:52 PM IST**, after the entrant replied exactly `submit`. Clocked displayed **ENTRY SAVED**. Refreshed the form and read all three complete text fields back: each matches the copy below exactly. [Saved receipt](SUBMISSION_RECEIPT.json); [masked original 9 Nov baseline](ENTRY_BASELINE_2026-11-10.json).
+Latest entry saved **10 Nov 2026, 4:49 PM IST**, after the entrant replied exactly `submit`. Clocked displayed **ENTRY SAVED**. Refreshed the form and read all three complete text fields back: each matches the copy below exactly, and all fixed fields are unchanged. This amendment reflects main `47c3b9c`. [Earlier 2:52 PM receipt](SUBMISSION_RECEIPT.json); [masked original 9 Nov baseline](ENTRY_BASELINE_2026-11-10.json).
 
-The update adds the recorded-review judge path and evidence explanation. Fixed fields remain unchanged. People’s Choice is off, its URL empty, and no LinkedIn post was published. The local draft’s active mention remains unverified because LinkedIn is signed out.
+The earlier saved update added the recorded-review judge path and evidence explanation. Fixed fields remain unchanged. People’s Choice is off, its URL empty, and no LinkedIn post was published. The local draft’s active mention remains unverified because LinkedIn is signed out.
 
 ## Fixed fields
 
@@ -23,21 +23,35 @@ The update adds the recorded-review judge path and evidence explanation. Fixed f
 | Integration | 2,345 | 2,472 | Recorded Fill/Extract/Decide outputs, exact anchors, conditional result and validation links |
 | Learned | 1,457 | 1,528 | Recorded run variation, judge access, captions and honest test/CI boundaries |
 
+## Saved amendment diff
+
+| Field | Saved 10 Nov, 2:52 PM IST | Saved 10 Nov, 4:49 PM IST | Limit | Change |
+| --- | ---: | ---: | ---: | --- |
+| Overview | 1,473 | 1,681 | 2,000 | Only the judge-path sentence: recorded outputs inline, no-live-call label, separate fixtures and full archive |
+| Integration | 2,472 | 2,698 | 3,000 | Two added sentences: inline recorded outputs; validation before budget reservation and safe provider 502s |
+| Learned | 1,528 | 1,528 | 2,000 | Unchanged: no test count or licensing discussion to update |
+
+Prepared and filled **10 Nov 2026, 4:48 PM IST**; saved with exact `submit` approval at **4:49 PM IST**. After refresh, both complete amended fields and the unchanged learned field matched the copy below exactly. All fixed selections, links and team details also matched the pre-save form. Before/after screenshots captured each changed field and its displayed count; a refreshed screenshot captured **ENTRY SAVED** and the new save time.
+
+All other field words, links, fixed selections and team details remain unchanged. People’s Choice stays off with an empty post URL. No LinkedIn action or new Clocked call is authorized.
+
+Verified on **10 Nov 2026** against production and main `47c3b9c`: the interactive four-person example displays the real recorded Fill roles, seven anchored Extract/Decide proposals and the conservative conditional result, under “Recorded 9 Nov Clocked output, no live call”, separately from the hand-authored starting interpretations. The full archive remains linked from the demo. `cloud/worker.ts` runs `prepareAnalysis` before `requireLive(2)`; provider failures map to a generic 502 through `server/http-errors.ts`. The keyless Worker error test and both local Worker + D1 tests passed during this amendment check. No real provider call was made to exercise errors.
+
 ## Overview
 
-1,473 / 2,000 characters
+1,681 / 2,000 characters
 
 A volunteer coordinator has four people, four roles, and a draft that fills only three. Another reminder to everyone does not explain the gap. OneQuestion shows which specific missing answer could change the whole roster.
 
 Review availability, willingness, qualifications and approval as separate facts. An exact matching engine builds an eligible draft and previews both answers to a clarification without changing saved evidence. In the fictional example, confirming Cy’s venue access unlocks three reassignments and the fourth role. Confirming Dee’s sound skill alone does not improve coverage. Only a recorded actual reply updates the saved evidence and plan.
 
-Judge path: watch the 93-second video, try the keyless four-person example, then open “Recorded 9 Nov Clocked review” from the demo page. That read-only view shows saved real Fill/Extract/Decide outputs, exact source anchors, the conservative conditional classification and the original review screenshot. It makes no new provider call. The interactive example’s starting interpretations are clearly labelled hand-authored fictional fixtures. Developers may optionally run locally with their own Clocked key.
+Judge path: watch the 93-second video, try the keyless four-person example—which now shows real recorded 9 Nov Clocked Fill/Extract/Decide outputs inline, labelled “Recorded 9 Nov Clocked output, no live call”, alongside the clearly labelled hand-authored fixtures—then open the full archive, “Recorded 9 Nov Clocked review”, from the demo page. That read-only view shows saved real Fill/Extract/Decide outputs, exact source anchors, the conservative conditional classification and the original review screenshot. It makes no new provider call. The interactive example’s starting interpretations are clearly labelled hand-authored fictional fixtures. Developers may optionally run locally with their own Clocked key.
 
 The app includes private browser workspaces, persistence, bounded paired-question analysis, roster CSV and private backup import/export. Anonymous analysis is rejected. Scope: one interval, up to 12 people and eight roles. An eligible draft does not confirm that a volunteer accepted an assignment.
 
 ## The integration
 
-2,472 / 3,000 characters
+2,698 / 3,000 characters
 
 Fill proposes editable role names and explicit requirement text from the organizer’s brief and flags unsupported scheduling constraints. Its output changes the event intake fields. A coordinator checks capacities and maps qualifications to the right roles; extraction does not silently approve that mapping.
 
@@ -47,9 +61,9 @@ New proposals remain unreviewed. Accepting an affirmative proposal requires a va
 
 The exact min-cost maximum matching engine maximizes filled roles, then minimizes changes to existing assignments. It evaluates both single-answer branches and all four branches of bounded question pairs. Model confidence is not treated as the probability of a human’s future reply.
 
-The keyless “Recorded 9 Nov Clocked review” links the saved validation JSONs, original source snapshot, exact anchors and docs/clocked-review.png. It shows three recorded Fill role proposals and the requirement they produced, plus seven separate Extract/Decide proposals. One explicit sound-operation statement was conservatively classified conditional; the archive preserves that result and the review boundary. Availability was explicitly reviewed and persisted after reload; six proposals remained unreviewed. These are real recorded provider outputs on fictional inputs, not fresh calls or the hand-authored example.
+Judges also see recorded Clocked outputs inside the interactive workflow, not only on the archive page. The keyless “Recorded 9 Nov Clocked review” links the saved validation JSONs, original source snapshot, exact anchors and docs/clocked-review.png. It shows three recorded Fill role proposals and the requirement they produced, plus seven separate Extract/Decide proposals. One explicit sound-operation statement was conservatively classified conditional; the archive preserves that result and the review boundary. Availability was explicitly reviewed and persisted after reload; six proposals remained unreviewed. These are real recorded provider outputs on fictional inputs, not fresh calls or the hand-authored example.
 
-The public judge path makes no Clocked request. Anonymous analysis and wrong access codes are rejected; no shared owner code is published. Server-side adapters use the official SDK with bounded requests and a six-request hosted daily cap. Developers can run the local Express/SQLite app with their own key; hosted workspaces use session-scoped Cloudflare D1 storage. Synthetic adapter tests and recorded provider evidence are distinguished. The initial eight-case Decide batch matched all eight labels once; no broad accuracy estimate is claimed.
+The public judge path makes no Clocked request. Anonymous analysis and wrong access codes are rejected; no shared owner code is published. Invalid analysis requests are rejected before any daily Clocked budget is reserved, and provider errors return safe 502s. Server-side adapters use the official SDK with bounded requests and a six-request hosted daily cap. Developers can run the local Express/SQLite app with their own key; hosted workspaces use session-scoped Cloudflare D1 storage. Synthetic adapter tests and recorded provider evidence are distinguished. The initial eight-case Decide batch matched all eight labels once; no broad accuracy estimate is claimed.
 
 ## What you learned
 
@@ -77,4 +91,4 @@ The saved-entry verification passed 14 tests on 10 Nov, including the real local
 
 ## Gated actions
 
-The entrant’s exact `submit` approved this form save and the Phase 5 public-file commit/push. LinkedIn publication was not approved and remains gated. No further form edit is planned. The entrant subsequently requested MIT licensing on the ui-polish branch. The saved entry text above remains unchanged; no new form save is proposed. No billing changes or spending are authorized.
+The entrant’s new exact `submit` approved this amendment’s save, refreshed readback, and commit/push of **docs/SUBMISSION.md only**. The form save and readback are verified. The earlier receipt file remains unchanged as historical evidence. No further form change is planned. The freeze remains **11 Nov 2026, 8:30 AM IST**. Deployment, LinkedIn publication, billing changes and spending are outside this amendment’s authorization.
