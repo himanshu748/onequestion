@@ -316,6 +316,14 @@ function App() {
             Workspace <ChevronRight size={13} />
             <strong>{w ? w.event.name : "Welcome"}</strong>
           </span>
+          {hosted && canUnlock && (
+            <button
+              className={"text-button owner-access " + (live ? "owner-enabled" : "")}
+              onClick={() => setModal({ type: "connect" })}
+            >
+              {live ? "Live analysis access" : "Enable live analysis"}
+            </button>
+          )}
           <span className="save-status">
             <span className="online-dot" />
             {busy

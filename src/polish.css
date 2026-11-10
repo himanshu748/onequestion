@@ -474,3 +474,10 @@
   }
 }
 .welcome .illustration-title{font-size:14px;font-weight:400;margin:0;line-height:1.7}
+
+/* Keep one visible owner action: sidebar on desktop, header on mobile/live sessions. */
+.owner-access { display: none; }
+.owner-access.owner-enabled { display: inline-flex; }
+@media (max-width: 600px) {
+  .owner-access { display: inline-flex; flex-shrink: 0; font-size: 14px; min-height: 44px; }
+}
