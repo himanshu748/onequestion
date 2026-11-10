@@ -33,3 +33,7 @@ Entries below record each requested build slice. Verification findings and previ
 ### 10 Nov, 3:03 PM IST — 1. Hero and first screen
 
 Implemented demo typographic hero, restrained original question schematic, numbered judge path with unchanged content/order/links, shared self-hosted font assets with licenses, responsive canvas and finite 320–480 ms entrance choreography. Existing video/captions and all factual paragraphs retained. No JavaScript or API changes. Build passed. First slice is confined to ui-polish; production unchanged.
+
+### 10 Nov, 03:05 PM IST — 2. Question and answer interaction
+
+Added presentation-only workbench skin: larger question hierarchy, tactile answer tiles, stronger selected/focus boundaries, short 220–260 ms state transitions, redesigned existing empty/error/dialog treatments. No event handlers, API contracts, data or visible factual copy changed. Reduced-motion disables all transitions.

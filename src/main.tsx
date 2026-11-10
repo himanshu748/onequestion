@@ -38,6 +38,7 @@ import {
 } from "./domain";
 import { rosterCsv, parseCsv } from "./import-export";
 import "./styles.css";
+import "./polish.css";
 
 type Bundle = {
   workspace: Workspace;
