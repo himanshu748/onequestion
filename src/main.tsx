@@ -433,6 +433,10 @@ function App() {
             <p className="demo-caption">
               Fictional volunteers. Real roster calculations. No API key needed.
             </p>
+            <a className="recorded-review-link" href="/recorded-review/">
+              Recorded 9 Nov Clocked review · keyless{" "}
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
             <div className="welcome-illustration">
               <div className="illustration-label">
                 <span className="pill">THE DIFFERENCE ONE ANSWER MAKES</span>

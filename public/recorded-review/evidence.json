@@ -1,0 +1,141 @@
+{
+  "title": "Recorded 9 Nov Clocked review",
+  "recordedDateIST": "9 Nov 2026",
+  "isRecorded": true,
+  "isLive": false,
+  "fictionalInputs": true,
+  "description": "Read-only presentation of saved real provider outputs. Opening this page makes no Clocked request. The interactive four-person example has separate hand-authored starting interpretations.",
+  "fill": {
+    "httpStatus": 200,
+    "providerRequests": 1,
+    "roles": [
+      "Welcome volunteer",
+      "Tickets volunteer",
+      "AV volunteer"
+    ],
+    "requirements": [
+      "must be able to operate sound independently"
+    ],
+    "unsupported": false,
+    "credits": 10,
+    "model": "clocked-1.0"
+  },
+  "extractDecide": {
+    "sourceSnapshotCreatedIST": "2026-11-09T14:49:19.024000+05:30",
+    "sourceText": "[Message 2026-11-09T07:00:00.000Z]\nI am available for the full gathering on 14 November, 16:00–19:00 Asia/Kolkata. I am happy to do AV or Keyholder. I can operate sound independently. I think my venue keyholder access was renewed. I am not willing to take any other roles.",
+    "offsetConvention": "Unicode code points; start inclusive, end exclusive, in the unchanged full source snapshot",
+    "proposals": [
+      {
+        "label": "Is Cy available for the full event interval?",
+        "kind": "availability",
+        "slot": null,
+        "status": "yes",
+        "reviewed": true,
+        "anchors": [
+          {
+            "value": "I am available for the full gathering on 14 November, 16:00–19:00 Asia/Kolkata",
+            "start": 35,
+            "end": 113
+          }
+        ],
+        "reviewNote": "The original message explicitly covers the full dated event interval and timezone."
+      },
+      {
+        "label": "Is Cy willing to take Welcome?",
+        "kind": "willingness",
+        "slot": "welcome",
+        "status": "no",
+        "reviewed": false,
+        "anchors": [
+          {
+            "value": "I am not willing to take any other roles.",
+            "start": 231,
+            "end": 272
+          }
+        ],
+        "reviewNote": null
+      },
+      {
+        "label": "Is Cy willing to take Tickets?",
+        "kind": "willingness",
+        "slot": "tickets",
+        "status": "no",
+        "reviewed": false,
+        "anchors": [
+          {
+            "value": "I am not willing to take any other roles.",
+            "start": 231,
+            "end": 272
+          }
+        ],
+        "reviewNote": null
+      },
+      {
+        "label": "Is Cy willing to take AV?",
+        "kind": "willingness",
+        "slot": "av",
+        "status": "yes",
+        "reviewed": false,
+        "anchors": [
+          {
+            "value": "I am happy to do AV",
+            "start": 115,
+            "end": 134
+          }
+        ],
+        "reviewNote": null
+      },
+      {
+        "label": "Does Cy satisfy: independent sound operation?",
+        "kind": "qualification",
+        "slot": "av",
+        "status": "conditional",
+        "reviewed": false,
+        "anchors": [
+          {
+            "value": "I can operate sound independently.",
+            "start": 149,
+            "end": 183
+          }
+        ],
+        "reviewNote": null
+      },
+      {
+        "label": "Is Cy willing to take Keyholder?",
+        "kind": "willingness",
+        "slot": "keyholder",
+        "status": "yes",
+        "reviewed": false,
+        "anchors": [
+          {
+            "value": "I am happy to do AV or Keyholder",
+            "start": 115,
+            "end": 147
+          }
+        ],
+        "reviewNote": null
+      },
+      {
+        "label": "Does Cy satisfy: current venue keyholder access?",
+        "kind": "qualification",
+        "slot": "keyholder",
+        "status": "conditional",
+        "reviewed": false,
+        "anchors": [
+          {
+            "value": "I think my venue keyholder access was renewed.",
+            "start": 184,
+            "end": 230
+          }
+        ],
+        "reviewNote": null
+      }
+    ]
+  },
+  "provenance": {
+    "fill": "docs/DEMO_VALIDATION.json, recorded Fill request in the 9 Nov video",
+    "extractDecide": "Known fictional QA workspace, compared against docs/BROWSER_LIVE_VALIDATION.json; no new model outputs generated",
+    "screenshot": "docs/clocked-review.png, unchanged capture from 9 Nov",
+    "scope": "One fictional source snapshot and saved results, not a broad accuracy or reliability benchmark"
+  }
+}

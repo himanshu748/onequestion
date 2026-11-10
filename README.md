@@ -8,6 +8,15 @@ OneQuestion is a planning workbench for coordinators of small events. Original v
 
 Watch the [product demo](https://onequestion.tbud.workers.dev/demo/), try the [hosted app](https://onequestion.tbud.workers.dev), or run it locally. The hosted example and manual planning need no account or provider credits. [Hosting and privacy details](docs/DEPLOYMENT.md).
 
+## Judge path
+
+1. [Watch the 93-second video](https://onequestion.tbud.workers.dev/demo/#demo-video).
+2. [Try the keyless four-person example](https://onequestion.tbud.workers.dev): its starting interpretations are hand-authored fictional fixtures.
+3. [Open the Recorded 9 Nov Clocked review](https://onequestion.tbud.workers.dev/recorded-review/): saved real Fill/Extract/Decide proposals, exact source anchors, the conservative conditional label and the actual review screenshot. This static view makes no new Clocked request.
+4. Optionally, run locally and [configure your own Clocked key](#clocked-integration).
+
+The first three steps need no account or key. Anonymous provider analysis is rejected; no shared owner access code is published. The recorded results are not the hand-authored example and are not a broad accuracy benchmark.
+
 ## Run locally
 
 Requires **Node.js 22.13 or newer** (tested with 22.14.0) and npm. Node's built-in SQLite API is experimental on Node 22 and may emit a warning.
@@ -96,7 +105,7 @@ Tests cover the canonical reassignment, conditional and approval gates, a two-an
 
 React + Vite render the workbench. Express owns local validation, the official Clocked SDK and SQLite. The hosted Worker reuses the validation and adapter modules, scopes D1 queries to a session owner, and keeps provider secrets server-side. `src/domain.ts` is the pure min-cost maximum matching and question engine; the same module supports local browser previews. No third-party optimizer or agent framework is required. Hosted plan and question calculations run in the browser to keep Worker CPU bounded.
 
-There is no user-account login, collaboration, automatic backup export, auto-messaging, calendar integration or external credential verification. Protect and Verify were deferred to finish the core three-endpoint journey; the roster export minimizes fields locally and makes no redaction or model-grounding claim. There is no independent-user usability study or broad/repeated semantic benchmark. The app is published for a bounded hackathon demo; production readiness and contest submission are not established. A recorded demo is available. The Clocked Build Challenge entry was submitted November 9; [the saved-entry receipt](docs/SUBMISSION_RECEIPT.json) confirms submission, not eligibility or an award. Project license selection remains open.
+There is no user-account login, collaboration, automatic backup export, auto-messaging, calendar integration or external credential verification. Protect and Verify were deferred to finish the core three-endpoint journey; the roster export minimizes fields locally and makes no redaction or model-grounding claim. There is no independent-user usability study or broad/repeated semantic benchmark. The app is published for a bounded hackathon demo; production readiness is not established. A recorded demo is available. The Clocked Build Challenge entry was submitted November 9 and updated November 10; [the saved-entry receipt](docs/SUBMISSION_RECEIPT.json) confirms submission, not eligibility or an award. Project license selection remains open.
 
 ## Troubleshooting
 

@@ -46,6 +46,14 @@ A coordinator can create a supported event, add original volunteer messages, rev
 
 ## Browser environment and evidence
 
+### 10 Nov update verification
+
+- Passed: all 14 local tests, including the real local Worker/D1 test (16.721 seconds), and strict TypeScript/Vite build. GitHub CI is not claimed green.
+- Passed: keyless recorded-review archive compared with saved Fill and browser validation records, including every original Unicode anchor and the unchanged conditional classification.
+- Passed: deployed demo/root smoke checks, 13 optional caption cues, recorded-review desktop/mobile rendering and anonymous analysis denial. No new Clocked provider calls.
+- Confirmed saved: three revised entry fields after exact `submit` approval, 10 Nov, 2:52 PM IST. Full text matches after refresh; actual saved-banner screenshot and updated receipt retained. Public release verification is recorded in the agent log.
+- Blocked: active LinkedIn mention cannot be verified while signed out. Local draft exists; no post published and People’s Choice remains off.
+
 Local URL: http://127.0.0.1:4317. Chromium (Google Chrome for Testing), with desktop and mobile-sized viewports. The Browser plugin was not available; the legacy Playwright skill wrapper's @playwright/mcp package exposed no CLI, so QA used @playwright/cli with the already installed browser executable. No replacement browser was downloaded. A dedicated Browser plugin can improve future in-app QA ergonomics.
 
 Checked page title and URL, meaningful rendered content, absence of a framework error overlay, console health, screenshots and primary interactions. Development HMR reload messages during edits were distinguished from the production-mode checks. Screenshots are actual captures; the displayed volunteers and interpretations are fictional.

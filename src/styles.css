@@ -16,6 +16,16 @@
   --green: #236247;
   --paper: #f7f6f2;
 }
+.recorded-review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #304bd0;
+  font-size: 12px;
+  font-weight: 600;
+  text-underline-offset: 3px;
+  margin-bottom: 16px;
+}
 * {
   box-sizing: border-box;
 }

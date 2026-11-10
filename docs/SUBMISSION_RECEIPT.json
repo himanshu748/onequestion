@@ -1,10 +1,9 @@
 {
-  "verifiedAt": "2026-11-09T13:15:09.750226+00:00",
   "event": "Clocked Build Challenge",
   "project": "OneQuestion",
   "status": "Official entry saved",
   "confirmation": "ENTRY SAVED",
-  "lastSavedAsDisplayed": "9 Nov 2026 at 6:44 PM",
+  "lastSavedAsDisplayed": "10 Nov 2026 at 2:52 PM",
   "confirmationDetail": "Entry saved. You can edit it until November 10, 11:59 p.m. Eastern Time.",
   "entryForm": "https://clocked.rezolve.ai/challenge#submit",
   "demo": "https://onequestion.tbud.workers.dev/demo/",
@@ -20,6 +19,27 @@
   ],
   "peoplesChoice": false,
   "rulesAgreement": "Accepted with explicit entrant authorization",
-  "evidence": "Observed the official authenticated entry form change from NEW ENTRY to ENTRY SAVED after submission.",
-  "limits": "Receipt confirms a saved entry; eligibility review, judging and awards remain unestablished. Private entrant contact details omitted from this public record."
+  "evidence": "Observed ENTRY SAVED with new last-saved time after Save changes. Refreshed and read the full overview, integration and learned text back exactly; fixed links, endpoints and award selections retained; People\u2019s Choice off with empty URL.",
+  "limits": "Receipt confirms a saved entry; eligibility review, judging and awards remain unestablished. Private entrant contact details omitted from this public record.",
+  "verifiedAtIST": "2026-11-10T14:54:30.585445+05:30",
+  "lastSavedIST": "2026-11-10T14:52:00+05:30",
+  "previousLastSavedIST": "9 Nov 2026, 6:44 PM IST",
+  "writeup": "https://github.com/himanshu748/onequestion#readme",
+  "peoplesChoicePostURL": "",
+  "authorization": "Exact entrant reply submit for this update; no LinkedIn publication approved",
+  "savedFields": {
+    "overview": {
+      "characters": 1473,
+      "fnv1a": "ba6b5bc2"
+    },
+    "integration": {
+      "characters": 2472,
+      "fnv1a": "82a1c6d1"
+    },
+    "learned": {
+      "characters": 1528,
+      "fnv1a": "ac6dba0"
+    }
+  },
+  "localScreenshot": "clocked-update-review/saved-entry.jpg"
 }
