@@ -1,3 +1,4 @@
+import { RecordedOutput } from "./RecordedOutput";
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -577,6 +578,7 @@ function App() {
                 )}
               </button>
             </div>
+            {w.demo && <RecordedOutput />}
             {preview && (
               <div className="preview-banner" role="status">
                 <Eye size={19} />

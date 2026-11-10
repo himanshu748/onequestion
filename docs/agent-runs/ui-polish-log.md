@@ -45,3 +45,11 @@ Refined coverage hierarchy, progress bars, roster cards, source quotations and f
 ### 10 Nov, 03:07 PM IST — 4. Recorded review page
 
 Reframed archive with large serif title, prominent recorded-not-live boundary, spacious typed proposal cards, readable exact quotes/offsets, conditional-card treatment, preserved screenshot proportions and clear provenance links. Original evidence JSON/image and source snapshot byte-unchanged. Original factual text retained; only wrapper structure and presentation changed.
+
+## 10 Nov, 03:11 PM IST — addendum: contest score takes priority
+
+User narrowed remaining work: recorded outputs inside the interactive example, concise README, explicit MIT license, focused readability fixes, then verification/preview. Existing branch work retained; no further broad redesign.
+
+### Addendum 1 — in-example recorded integration
+
+Added a read-only recorded-output panel inside demo workspaces, importing the same recorded-review JSON at build time. Exact visible label: “Recorded 9 Nov Clocked output, no live call”. Shows actual Fill roles/requirement, all seven Extract quotes and saved Decide labels, original JSON/source links and review boundary. It has no effects, network calls or workspace mutation path. Existing hand-authored plan data and matching remain untouched. Full records expand with native details; source offsets remain inspectable.
