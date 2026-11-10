@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spawn, execFileSync, type ChildProcess } from "node:child_process";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { solve } from "../src/domain";
@@ -10,6 +10,10 @@ test(
   "Cloudflare runtime isolates browser sessions and preserves review/revision boundaries with real local D1",
   { timeout: 120000 },
   async () => {
+    assert.ok(
+      existsSync("dist/index.html"),
+      "Cloudflare tests require dist/index.html. Run npm test (pretest builds assets), or npm run build before invoking this test directly.",
+    );
     const dir = mkdtempSync(path.join(tmpdir(), "onequestion-cloud-"));
     const port = 46000 + Math.floor(Math.random() * 1000);
     const base = `http://127.0.0.1:${port}`;
@@ -47,8 +51,13 @@ test(
         ],
         { env, stdio: "ignore" },
       );
+      let startupError: Error | undefined;
+      child.once("error", (error) => { startupError = error; });
       let ready = false;
       for (let i = 0; i < 200; i++) {
+        if (startupError) throw new Error("Wrangler could not start. Run npm ci and npm run build.");
+        if (child.exitCode !== null || child.signalCode !== null)
+          throw new Error(`Wrangler exited before readiness (code ${child.exitCode}, signal ${child.signalCode}). Run npm ci and npm run build.`);
         try {
           if ((await fetch(base + "/api/status")).ok) {
             ready = true;
@@ -150,7 +159,7 @@ test(
       });
       assert.equal(oversized.status, 413);
     } finally {
-      if (child && !child.killed) {
+      if (child && child.exitCode === null && child.signalCode === null && !child.killed) {
         const closed = new Promise((r) => child!.once("exit", r));
         child.kill("SIGTERM");
         await closed;

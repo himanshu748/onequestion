@@ -89,8 +89,8 @@ Reviewed facts and hypothetical previews remain separate. Hosted workspaces are 
 ## Verification
 
 ```sh
-npm test
 npm run build
+npm test
 npm audit
 ```
 

@@ -83,3 +83,7 @@ Mobile Lighthouse 12.8.2: review 100 performance / 100 accessibility, CLS 0. Ini
 Backend items 1–7 take priority, then optional pure-move extraction only before 11 Nov ~6:30 AM IST. Created explicit local fallback-a0029cf tag at confirmed production base; existing ui-polish ancestry already starts there. No tag or branch pushed.
 
 Prior verification checkpoint: complete 14-test suite passed with test concurrency 1, including HTTP (2.288 seconds) and real D1 (5.745 seconds). No timeout budgets or runtime logic changed to obtain this pass. Preview review Lighthouse 100/100, welcome 94/98 (heading-order diagnostic); fixed welcome section heading semantics without changing its text. Preview-only player geometry/content-visibility adjustment awaits final retest after backend.
+
+### 10 Nov, 03:27 PM IST — Backend 1: build prerequisites and fail-fast startup
+
+Added package pretest vite build, moved build before test in README/check workflow, and made Cloudflare test assert dist/index.html before setup. Child spawn errors/early exits now produce clear readiness errors, and cleanup avoids waiting for an already-exited child. npm test && npm run build passed: all 14 tests, real D1 4.649 seconds. Fresh disposable clone proof follows this commit. No provider calls.

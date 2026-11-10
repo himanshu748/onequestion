@@ -13,7 +13,8 @@
     "test": "tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
     "dev:cloud": "wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "pretest": "vite build"
   },
   "dependencies": {
     "clocked-sdk": "^0.7.0",
