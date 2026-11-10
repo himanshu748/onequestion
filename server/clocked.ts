@@ -1,3 +1,4 @@
+import { ProviderResponseError } from "./provider-errors";
 import {
   Clocked,
   type DecideQuestion,
@@ -60,7 +61,7 @@ export async function compileBrief(text: string, config?: LiveConfig) {
       },
     },
   });
-  const parsed = z
+  const result = z
     .object({
       fields: z.object({
         roles: z.object({
@@ -77,7 +78,9 @@ export async function compileBrief(text: string, config?: LiveConfig) {
         }),
       }),
     })
-    .parse(r.data);
+    .safeParse(r.data);
+  if (!result.success) throw new ProviderResponseError();
+  const parsed = result.data;
   return {
     roles: parsed.fields.roles.value,
     requirements: parsed.fields.requirements.value ?? [],
@@ -167,9 +170,7 @@ export async function analyzePerson(
         answer.choice,
       )
     )
-      throw new Error(
-        "Clocked returned an invalid classification. No facts were changed.",
-      );
+      throw new ProviderResponseError();
     const span = extracted.data.fields[key];
     const anchor = {
       sourceId: source.id,

@@ -1,3 +1,4 @@
+import { publicError, errorRoute } from "../server/http-errors";
 import type { D1Database, Fetcher } from "@cloudflare/workers-types";
 import { z } from "zod";
 import { Event, Workspace, solve, type Workspace as W } from "../src/domain";
@@ -371,25 +372,9 @@ export default {
       }
       fail("Unknown API route.", 404);
     } catch (error) {
-      const e = error as { status?: number };
-      if (error instanceof z.ZodError)
-        return respond(
-          {
-            error:
-              "Invalid input: " + error.issues.map((i) => i.message).join("; "),
-          },
-          400,
-        );
-      const message =
-        error instanceof Error ? error.message : "Request failed.";
-      return respond(
-        {
-          error: /clk_|Bearer |api.key/i.test(message)
-            ? "Provider request failed. Check the private server configuration."
-            : message,
-        },
-        e.status ?? 400,
-      );
+      const failure = publicError(error);
+      console.error({ route: errorRoute(url.pathname), method: req.method, status: failure.status, name: failure.name });
+      return respond({ error: failure.message }, failure.status);
     }
   },
 };

@@ -20,5 +20,5 @@
     },
   ],
   "vars": { "LIVE_DAILY_REQUEST_LIMIT": "6" },
-  "observability": { "enabled": false },
+  "observability": { "enabled": true },
 }

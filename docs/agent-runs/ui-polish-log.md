@@ -91,3 +91,11 @@ Added package pretest vite build, moved build before test in README/check workfl
 ### 10 Nov, 03:29 PM IST — Backend 2: validate before budget reservation
 
 Exported pure prepareAnalysis: person membership, non-derived source presence, unchanged combined snapshot <=16000 chars, at least one non-approval fact and room under 100 sources. Worker and Express call it before budget/active accounting; analyzePerson also validates direct callers before constructing the client. Added keyless purity/invalid-input regression. npm test && npm run build passed all 15 tests (real D1 8.165 seconds). Fresh-clone reproduction is running independently in a disposable local clone with no .env.
+
+### 10 Nov, 03:32 PM IST — Backend 3: safe hosted errors and structured logging
+
+Worker now preserves explicit expected status/message and Zod 400s; otherwise returns generic 500, or generic 502 for SDK/provider-response errors. Logs only known route template, method, numeric status and a bounded error name; no bodies, sources, tokens, keys or exception messages. Added keyless fetch-level response/log regression. Production wrangler observability enabled in configuration only; no production deploy. npm test && npm run build passed all 16 tests, real D1 4.686 seconds.
+
+Fresh clone proof: npm ci passed (181 packages); original a0029cf Cloudflare test with dist removed failed after 23.823 seconds in this environment (not the reported 120 seconds). Patched direct invocation fails immediately with the explicit missing-dist message. In the same disposable clone, rm -rf dist followed by npm test rebuilt assets via pretest and passed all 14 tests present at Backend 1. Evidence: local fresh-clone-baseline.txt, fresh-clone-fail-fast.txt and fresh-clone-npm-test.txt. No .env copied.
+
+Demo mobile Lighthouse after offscreen-player rendering fix: 94 performance / 100 accessibility, CLS 0. The previous 61 result is retained as diagnostic evidence, not hidden.
