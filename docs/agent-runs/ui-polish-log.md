@@ -61,3 +61,9 @@ Kept the four-step judge path and concise endpoint table; added explicit Protect
 ### 10 Nov, 03:12 PM IST — Addendum 3: MIT license
 
 Added the standard MIT LICENSE with 2026 Himanshu Kumar copyright, as explicitly requested, and linked it in README. Included font OFL notices remain applicable to those third-party assets.
+
+### 10 Nov, 03:14 PM IST — Addendum 4: focused visual/readability pass
+
+Retained static demo/archive visual direction and first welcome screen. Removed the earlier broad workbench question/result skin to respect the narrowed scope. Raised small grey metadata on the two static pages and first app screen to at least 14 px, with dark AA-oriented colors. Removed the duplicate header live-access action; the sidebar action remains. Consolidated six repeated archive awaiting-review notes into one section note. Quote offsets moved into native keyboard-accessible details, leaving plain highlighted quotes. Existing silent-video captions already have 13 cues and remain byte-unchanged. Added OG card and shared existing favicon; no new product claims.
+
+Preview preparation uses a separate onequestion-ui-polish Worker and D1 database (be5e48c2-c380-4b10-ae16-439f5e724d22), with no Clocked secrets and zero configured provider allowance. Original production database and Worker configuration unchanged.
