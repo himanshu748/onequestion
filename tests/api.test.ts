@@ -132,6 +132,21 @@ test("real HTTP entry point persists replies, rejects stale/cross-origin edits, 
     assert.match((await unavailable.json()).error, /disabled/);
     const current = await (await call(`/workspaces/${id}`)).json();
     assert.equal(current.workspace.revision, 1);
+    // Live work is disabled: exercise the local request ceiling without any provider transport.
+    for (let i = 0; i < 39; i++) {
+      const disabled = await call("/compile", { text: "One Welcome role." });
+      assert.equal(disabled.status, 400);
+      assert.match((await disabled.json()).error, /disabled/);
+    }
+    assert.equal(
+      (await call("/compile", { text: "One Welcome role." })).status,
+      429,
+    );
+    assert.equal(
+      (await call(`/workspaces/${id}/analyze`, { revision: 1, personId: "cy" }))
+        .status,
+      429,
+    );
   } finally {
     await stop();
     rmSync(dir, { recursive: true, force: true });

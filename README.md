@@ -43,6 +43,8 @@ npm run build
 npm start
 ```
 
+Express serves local development; the Cloudflare Worker serves the hosted app.
+
 The Express app binds only to loopback and is intended for a trusted single-user Mac. The hosted version uses a separate Cloudflare Worker with private browser sessions and D1 storage.
 
 ## Plan your own event

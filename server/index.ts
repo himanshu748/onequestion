@@ -212,8 +212,9 @@ app.post(
       .object({ text: z.string().trim().min(1).max(8000) })
       .parse(req.body);
     if (active.size || calls >= 40)
-      throw new Error(
-        "Live request limit reached or another analysis is running.",
+      throw Object.assign(
+        new Error("Live request limit reached or another analysis is running."),
+        { status: 429 },
       );
     active.add("compile");
     calls++;
@@ -238,8 +239,11 @@ app.post(
       });
     prepareAnalysis(w, b.personId);
     if (active.size || calls >= 40)
-      throw new Error(
-        "Another analysis is running or the 40-analysis session limit was reached.",
+      throw Object.assign(
+        new Error(
+          "Another analysis is running or the 40-analysis session limit was reached.",
+        ),
+        { status: 429 },
       );
     active.add(id);
     calls++;
@@ -249,6 +253,10 @@ app.post(
         w.sources.push(r.source);
         for (const proposal of r.proposals) {
           const index = w.facts.findIndex((f) => f.id === proposal.id);
+          if (index < 0)
+            throw Object.assign(new Error("Analysis is stale."), {
+              status: 409,
+            });
           w.facts[index] = proposal;
         }
       });

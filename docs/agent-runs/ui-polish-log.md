@@ -103,3 +103,7 @@ Demo mobile Lighthouse after offscreen-player rendering fix: 94 performance / 10
 ### 10 Nov, 03:33 PM IST — Backend 4: zero-budget keyless runtime regression
 
 Second real local Worker starts with the explicitly synthetic key and zero daily allowance, unlocks using a synthetic local code, then asserts compile 429, unknown-person analysis 400 (not 429), and valid analysis 429. No provider call occurs. Current suite count updated to 17 in README/checklist. npm test && npm run build passed 17/17; original D1 scenario 4.580 seconds, zero-budget Worker 3.342 seconds.
+
+### 10 Nov, 03:35 PM IST — Backend 5: Express parity
+
+Added the missing proposal-ID stale guard with 409, and explicit 429 statuses for both local analysis/compile request ceilings. Extended real HTTP regression to reach the local ceiling while provider calls are disabled, then verify both routes return 429. README states Express local development / Worker hosted. npm test && npm run build passed all 17 tests, D1 scenarios 4.684 / 3.287 seconds.
