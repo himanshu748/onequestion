@@ -11,7 +11,7 @@ import {
   reviewFact,
   importWorkspace,
 } from "../server/actions";
-import { compileBrief, analyzePerson } from "../server/clocked";
+import { compileBrief, analyzePerson, prepareAnalysis } from "../server/clocked";
 import { videoResponse } from "./video";
 
 export interface Env {
@@ -353,6 +353,7 @@ export default {
         const w = await read(id);
         if (w.revision !== b.revision)
           fail("Reload the current workspace first.", 409);
+        prepareAnalysis(w, b.personId);
         await requireLive(2);
         const result = await analyzePerson(w, b.personId, {
           apiKey: env.CLOCKED_API_KEY,

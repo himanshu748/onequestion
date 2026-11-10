@@ -20,7 +20,7 @@ import {
   reviewFact,
   importWorkspace,
 } from "./actions";
-import { available, compileBrief, analyzePerson } from "./clocked";
+import { available, compileBrief, analyzePerson, prepareAnalysis } from "./clocked";
 
 const app = express();
 const port = Number(process.env.PORT ?? 4317);
@@ -231,6 +231,7 @@ app.post(
       throw Object.assign(new Error("Reload the current workspace first."), {
         status: 409,
       });
+    prepareAnalysis(w, b.personId);
     if (active.size || calls >= 40)
       throw new Error(
         "Another analysis is running or the 40-analysis session limit was reached.",

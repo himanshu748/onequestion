@@ -87,3 +87,7 @@ Prior verification checkpoint: complete 14-test suite passed with test concurren
 ### 10 Nov, 03:27 PM IST — Backend 1: build prerequisites and fail-fast startup
 
 Added package pretest vite build, moved build before test in README/check workflow, and made Cloudflare test assert dist/index.html before setup. Child spawn errors/early exits now produce clear readiness errors, and cleanup avoids waiting for an already-exited child. npm test && npm run build passed: all 14 tests, real D1 4.649 seconds. Fresh disposable clone proof follows this commit. No provider calls.
+
+### 10 Nov, 03:29 PM IST — Backend 2: validate before budget reservation
+
+Exported pure prepareAnalysis: person membership, non-derived source presence, unchanged combined snapshot <=16000 chars, at least one non-approval fact and room under 100 sources. Worker and Express call it before budget/active accounting; analyzePerson also validates direct callers before constructing the client. Added keyless purity/invalid-input regression. npm test && npm run build passed all 15 tests (real D1 8.165 seconds). Fresh-clone reproduction is running independently in a disposable local clone with no .env.

@@ -87,34 +87,41 @@ export async function compileBrief(text: string, config?: LiveConfig) {
     model: r.data.model,
   };
 }
+/** Pure validation and input preparation; no IDs, clocks, provider work or mutation. */
+export function prepareAnalysis(w: Workspace, personId: string) {
+  const invalid = (message: string): never => {
+    throw Object.assign(new Error(message), { status: 400 });
+  };
+  const person = w.people.find((p) => p.id === personId);
+  if (!person) invalid("Person not found in this workspace.");
+  if (w.sources.length >= 100)
+    invalid("The workspace has reached its 100-source limit.");
+  const sources = w.sources.filter((s) => s.personId === personId && !s.derived);
+  if (!sources.length) invalid("Add at least one source message first.");
+  const text = sources.map((s) => `[Message ${s.createdAt}]\n${s.text}`).join("\n\n");
+  if (text.length > 16000)
+    invalid("Source messages exceed the 16,000 character analysis budget.");
+  const facts = w.facts.filter((f) => f.personId === personId && f.kind !== "approval");
+  if (!facts.length) invalid("Add at least one non-approval prerequisite first.");
+  return { person: person!, text, facts };
+}
+
 export async function analyzePerson(
   w: Workspace,
   personId: string,
   config?: LiveConfig,
 ) {
+  const prepared = prepareAnalysis(w, personId);
   const c = client(config);
-  const sources = w.sources.filter(
-    (s) => s.personId === personId && !s.derived,
-  );
-  if (!sources.length)
-    throw new Error("Add at least one source message first.");
-  // One immutable combined source makes offsets verifiable without guessing which message a span belongs to.
+  // One immutable combined snapshot preserves the original offset convention.
   const source: Source = {
     id: crypto.randomUUID(),
     personId,
-    text: sources
-      .map((s) => `[Message ${s.createdAt}]\n${s.text}`)
-      .join("\n\n"),
+    text: prepared.text,
     createdAt: new Date().toISOString(),
     derived: true,
   };
-  if (source.text.length > 16000)
-    throw new Error(
-      "Source messages exceed the 16,000 character analysis budget.",
-    );
-  const facts = w.facts.filter(
-    (f) => f.personId === personId && f.kind !== "approval",
-  );
+  const facts = prepared.facts;
   const fields: Record<string, ExtractFieldSpec> = {};
   const qs: Record<string, DecideQuestion> = {};
   facts.forEach((f, i) => {
