@@ -107,3 +107,7 @@ Second real local Worker starts with the explicitly synthetic key and zero daily
 ### 10 Nov, 03:35 PM IST — Backend 5: Express parity
 
 Added the missing proposal-ID stale guard with 409, and explicit 429 statuses for both local analysis/compile request ceilings. Extended real HTTP regression to reach the local ceiling while provider calls are disabled, then verify both routes return 429. README states Express local development / Worker hosted. npm test && npm run build passed all 17 tests, D1 scenarios 4.684 / 3.287 seconds.
+
+### 10 Nov, 03:36 PM IST — Backend 6: bounded inputs and safe parsing
+
+NaN/Infinity budget configuration falls back to six through a pure bounded helper. Decide uses Status.safeParse, removing the classification cast. Browser API client handles non-JSON failures with a generic status message. Added persisted label/note/history/ID bounds and keyless bounds tests; canonical demo and all archived anchors still parse. npm test && npm run build passed all 19 tests, D1 scenarios 7.154 / 6.660 seconds. Planned browser error-response smoke follows the component move.

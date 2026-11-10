@@ -75,8 +75,17 @@ async function api<T>(
     headers: body ? { "Content-Type": "application/json" } : {},
     body: body ? JSON.stringify(body) : undefined,
   });
-  const data = await r.json();
-  if (!r.ok) throw new Error(data.error ?? "Request failed");
+  const data = await r.json().catch(() => null);
+  if (!r.ok)
+    throw new Error(
+      typeof data?.error === "string"
+        ? data.error
+        : `Request failed (${r.status}). Please try again.`,
+    );
+  if (data === null || typeof data !== "object")
+    throw new Error(
+      "The server returned an unexpected response. Please try again.",
+    );
   if (data.workspace && !data.plan) {
     const w = WorkspaceSchema.parse(data.workspace);
     data.workspace = w;

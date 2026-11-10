@@ -7,6 +7,7 @@ import {
 import { z } from "zod";
 import {
   anchorValid,
+  Status,
   type Workspace,
   type Fact,
   type Source,
@@ -170,14 +171,10 @@ export async function analyzePerson(
   const proposals: Fact[] = facts.map((f, i) => {
     const key = `fact_${i}`;
     const answer = decided.data.answers[key];
-    if (
-      !answer ||
-      answer.type !== "choice" ||
-      !["yes", "no", "unknown", "conditional", "conflict"].includes(
-        answer.choice,
-      )
-    )
-      throw new ProviderResponseError();
+    const status = Status.safeParse(
+      answer?.type === "choice" ? answer.choice : undefined,
+    );
+    if (!status.success) throw new ProviderResponseError();
     const span = extracted.data.fields[key];
     const anchor = {
       sourceId: source.id,
@@ -188,7 +185,7 @@ export async function analyzePerson(
     const valid = anchorValid(source, anchor);
     return {
       ...f,
-      status: answer.choice as Fact["status"],
+      status: status.data,
       reviewed: false,
       provenance: "clocked",
       anchors: valid ? [anchor] : [],

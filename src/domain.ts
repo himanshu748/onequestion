@@ -58,7 +58,7 @@ export const Source = z.object({
 });
 export type Source = z.infer<typeof Source>;
 export const Anchor = z.object({
-  sourceId: z.string(),
+  sourceId: z.string().max(200),
   value: z.string(),
   start: z.number().int().min(0),
   end: z.number().int().min(1),
@@ -66,22 +66,24 @@ export const Anchor = z.object({
 export const Fact = z.object({
   id: Identifier,
   personId: Identifier,
-  label: z.string(),
+  label: z.string().max(500),
   kind: z.enum(["availability", "willingness", "qualification", "approval"]),
   slotId: Identifier.optional(),
   status: Status,
   reviewed: z.boolean(),
   provenance: z.enum(["fixture", "coordinator", "clocked"]),
   anchors: z.array(Anchor),
-  note: z.string(),
-  history: z.array(
-    z.object({
-      at: z.string(),
-      status: Status,
-      note: z.string(),
-      reviewer: z.string(),
-    }),
-  ),
+  note: z.string().max(2000),
+  history: z
+    .array(
+      z.object({
+        at: z.string(),
+        status: Status,
+        note: z.string().max(2000),
+        reviewer: z.string(),
+      }),
+    )
+    .max(200),
 });
 export type Fact = z.infer<typeof Fact>;
 export const Person = z.object({
@@ -90,7 +92,7 @@ export const Person = z.object({
 });
 export type Person = z.infer<typeof Person>;
 export const Workspace = z.object({
-  id: z.string(),
+  id: z.string().max(200),
   revision: z.number().int(),
   demo: z.boolean(),
   event: Event,

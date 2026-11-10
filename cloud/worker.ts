@@ -1,3 +1,4 @@
+import { hostedDailyLimit } from "../server/limits";
 import { publicError, errorRoute } from "../server/http-errors";
 import type { D1Database, Fetcher } from "@cloudflare/workers-types";
 import { z } from "zod";
@@ -131,10 +132,7 @@ export default {
             403,
           );
         const day = new Date().toISOString().slice(0, 10);
-        const limit = Math.min(
-          20,
-          Math.max(0, Number(env.LIVE_DAILY_REQUEST_LIMIT ?? "6")),
-        );
+        const limit = hostedDailyLimit(env.LIVE_DAILY_REQUEST_LIMIT);
         await env.DB.prepare(
           "INSERT OR IGNORE INTO live_budget(day,used) VALUES (?,0)",
         )
