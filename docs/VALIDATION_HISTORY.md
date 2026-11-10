@@ -1,0 +1,8 @@
+# Recorded Clocked validation history
+
+A bounded live validation on November 9 used six requests and 42 free credits. Fill returned four role names and two explicit requirements; Extract/Decide produced proposals for Cy and Ben with valid exact spans for affirmative facts. A separate eight-case Decide batch matched all eight expected labels, including conflicts, conditional availability and withdrawals. This was an adapter-level run on fictional inputs, not a repeated evaluation or a broad accuracy estimate. See [live validation evidence](docs/LIVE_VALIDATION.json). A later deployed HTTPS smoke test exercised Fill, Extract and Decide through the real Worker in three additional requests. Its proposals stayed unreviewed, and affirmative proposals had valid exact spans. One explicit sound-operation qualification was conservatively labeled conditional; coordinator review remains necessary. See [deployed results](docs/HOSTED_LIVE_VALIDATION.json). Two further requests tested Extract → Decide from the deployed browser, followed by explicit acceptance of an anchored availability proposal and reload persistence. Six other proposals remained unreviewed. [Browser evidence](docs/BROWSER_LIVE_VALIDATION.json), [actual review screenshot](docs/clocked-review.png). A further real Fill request was captured in the video (10 free credits), bringing hosted requests that day to the six-request cap. [Recording details](docs/DEMO_VALIDATION.json). The canonical demo remains hand-authored.
+
+
+These historical records are separate from the hand-authored four-person fixture and from current local tests. No general accuracy estimate or green CI claim is made.
+
+[Back to the README](../README.md#clocked-integration)

@@ -53,3 +53,7 @@ User narrowed remaining work: recorded outputs inside the interactive example, c
 ### Addendum 1 — in-example recorded integration
 
 Added a read-only recorded-output panel inside demo workspaces, importing the same recorded-review JSON at build time. Exact visible label: “Recorded 9 Nov Clocked output, no live call”. Shows actual Fill roles/requirement, all seven Extract quotes and saved Decide labels, original JSON/source links and review boundary. It has no effects, network calls or workspace mutation path. Existing hand-authored plan data and matching remain untouched. Full records expand with native details; source offsets remain inspectable.
+
+### 10 Nov, 03:12 PM IST — Addendum 2: README
+
+Kept the four-step judge path and concise endpoint table; added explicit Protect/Verify not-used row. Moved the recorded validation chronology to docs/VALIDATION_HISTORY.md and storage/evidence/export/solver detail to docs/EVIDENCE_AND_PERSISTENCE.md with links back. Removed the open license-selection sentence and obsolete no-license footer. No evidence claims dropped or upgraded.
