@@ -41,3 +41,7 @@ Added presentation-only workbench skin: larger question hierarchy, tactile answe
 ### 10 Nov, 03:06 PM IST — 3. Result and evidence view
 
 Refined coverage hierarchy, progress bars, roster cards, source quotations and fact review spacing/type. Existing conditional/unreviewed/reviewed distinctions, data, source text and actions untouched. Existing reassignment animation remains finite (260 ms); no chart or behavior added.
+
+### 10 Nov, 03:07 PM IST — 4. Recorded review page
+
+Reframed archive with large serif title, prominent recorded-not-live boundary, spacious typed proposal cards, readable exact quotes/offsets, conditional-card treatment, preserved screenshot proportions and clear provenance links. Original evidence JSON/image and source snapshot byte-unchanged. Original factual text retained; only wrapper structure and presentation changed.
