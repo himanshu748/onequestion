@@ -27,3 +27,8 @@ Canonical walkthrough: Ana→Welcome, Ben→Tickets, Cy→AV; Keyholder empty, D
 ## Accessibility and motion
 
 Semantic buttons, native forms, keyboard-operable dialogs, initial dialog focus, Escape to close, focus restoration, visible focus, 44 px touch targets, polite live status announcements. Assignment inspection and confirmation require no dragging. Tabs preserve the selected source/question. Motion uses 160 ms feedback and 220 ms ease-out card changes; no ambient or continuous animation. Reduced motion removes movement and transitions. State text remains available without motion or color. Offline/API failures show an explicit error; unknown facts keep their own label. Stale analyses cannot be accepted. Empty events explain the next action.
+
+
+## 10 Nov preview refinements
+
+The ui-polish preview uses self-hosted Instrument Sans / Instrument Serif, a 14 px metadata floor on the judge pages and initial app screens, the same status colors and a clearly separated recorded-output archive. Broader workbench layout changes were removed after the entrant narrowed scope. [Design and verification log](agent-runs/ui-polish-log.md).

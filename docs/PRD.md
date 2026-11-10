@@ -1,3 +1,5 @@
+> Historical product brief. Planning documents now live together in docs/: [design](design.md), [build checklist](BUILD_CHECKLIST.md). Original instructions below are preserved as project history.
+
 # OneQuestion: Product Requirements Document
 
 Version: 1.0

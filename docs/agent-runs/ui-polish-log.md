@@ -111,3 +111,7 @@ Added the missing proposal-ID stale guard with 409, and explicit 429 statuses fo
 ### 10 Nov, 03:36 PM IST — Backend 6: bounded inputs and safe parsing
 
 NaN/Infinity budget configuration falls back to six through a pure bounded helper. Decide uses Status.safeParse, removing the classification cast. Browser API client handles non-JSON failures with a generic status message. Added persisted label/note/history/ID bounds and keyless bounds tests; canonical demo and all archived anchors still parse. npm test && npm run build passed all 19 tests, D1 scenarios 7.154 / 6.660 seconds. Planned browser error-response smoke follows the component move.
+
+### 10 Nov, 03:38 PM IST — Backend 7: judge-visible documentation tidy
+
+Moved PRD, build checklist and design into docs; fixed README and all local Markdown targets, including five relative evidence links exposed by the earlier history move. Added comments for hosted token/allowance variables without supplying values. README documents the deferred access-code throttling migration and keeps Extract/Decide sequential. Suite count is 19. npm test && npm run build passed 19/19; real D1 scenarios 25.996 / 9.256 seconds, within their timeout. All seven required backend items are complete before the optional refactor cutoff.
