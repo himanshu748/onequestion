@@ -1,5 +1,11 @@
+import { Avatar } from "./components/Avatar";
+import { Dialog } from "./components/Dialog";
+import { FactForm } from "./components/FactForm";
+import { EventForm } from "./components/EventForm";
+import { labels } from "./components/fact-labels";
+import { api, download } from "./api";
 import { RecordedOutput } from "./RecordedOutput";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight,
@@ -11,7 +17,6 @@ import {
   History,
   Download,
   ChevronRight,
-  Check,
   MessageCircle,
   HelpCircle,
   X,
@@ -28,12 +33,10 @@ import {
 } from "lucide-react";
 import {
   type Workspace,
-  Workspace as WorkspaceSchema,
   type Fact,
   type Plan,
   type Status,
   questions,
-  type Slot,
   anchorValid,
   solve,
 } from "./domain";
@@ -57,69 +60,11 @@ type Modal =
   | { type: "reset" }
   | { type: "delete" }
   | null;
-const labels: Record<Status, string> = {
-  yes: "Established",
-  no: "Not eligible",
-  unknown: "Unknown",
-  conditional: "Conditional",
-  conflict: "Conflict",
-};
-const personColors = ["#eae6fb", "#e3eee6", "#faeadb", "#e8edf4", "#f4e3e8"];
-async function api<T>(
-  path: string,
-  body?: unknown,
-  method?: string,
-): Promise<T> {
-  const r = await fetch("/api" + path, {
-    method: method ?? (body ? "POST" : "GET"),
-    headers: body ? { "Content-Type": "application/json" } : {},
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const data = await r.json().catch(() => null);
-  if (!r.ok)
-    throw new Error(
-      typeof data?.error === "string"
-        ? data.error
-        : `Request failed (${r.status}). Please try again.`,
-    );
-  if (data === null || typeof data !== "object")
-    throw new Error(
-      "The server returned an unexpected response. Please try again.",
-    );
-  if (data.workspace && !data.plan) {
-    const w = WorkspaceSchema.parse(data.workspace);
-    data.workspace = w;
-    data.plan = solve(w);
-    data.questions = questions(w);
-  }
-  return data;
-}
-function download(name: string, data: string, type: string) {
-  const url = URL.createObjectURL(new Blob([data], { type }));
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = name;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-function Avatar({
-  name,
-  index = 0,
-  small = false,
-}: {
-  name: string;
-  index?: number;
-  small?: boolean;
-}) {
-  return (
-    <span
-      className={"avatar " + (small ? "small" : "")}
-      style={{ background: personColors[index % personColors.length] }}
-    >
-      {name.slice(0, 1).toUpperCase()}
-    </span>
-  );
-}
+
+
+
+
+
 function App() {
   const [bundle, setBundle] = useState<Bundle | null>(null),
     [view, setView] = useState<View>("plan"),
@@ -1610,378 +1555,8 @@ function App() {
   );
 }
 
-function Dialog({
-  title,
-  onClose,
-  children,
-}: {
-  title: string;
-  onClose: () => void;
-  children: React.ReactNode;
-}) {
-  const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    const prior = document.activeElement as HTMLElement;
-    el?.showModal();
-    return () => {
-      el?.close();
-      prior?.focus();
-    };
-  }, []);
-  return (
-    <dialog
-      ref={ref}
-      className="dialog"
-      aria-label={title}
-      onCancel={(e) => {
-        e.preventDefault();
-        onClose();
-      }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      <div className="dialog-header">
-        <h2>{title}</h2>
-        <button
-          className="icon-button"
-          onClick={onClose}
-          aria-label="Close dialog"
-        >
-          <X size={20} />
-        </button>
-      </div>
-      <div className="dialog-content">{children}</div>
-    </dialog>
-  );
-}
-function FactForm({
-  fact,
-  reply,
-  busy,
-  onSave,
-}: {
-  fact: Fact;
-  reply?: boolean;
-  busy: boolean;
-  onSave: (
-    f: Fact,
-    s: Status,
-    n: string,
-    r: string,
-    a?: boolean,
-  ) => Promise<void>;
-}) {
-  const [status, setStatus] = useState<Status>(reply ? "yes" : fact.status),
-    [accept, setAccept] = useState(
-      fact.provenance === "clocked" && !fact.reviewed,
-    );
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        const fd = new FormData(e.currentTarget);
-        void onSave(
-          fact,
-          status,
-          String(fd.get("note")),
-          String(fd.get("reviewer")),
-          accept,
-        );
-      }}
-    >
-      <div className="review-question">
-        <MessageCircle size={20} />
-        <h3>{fact.label}</h3>
-      </div>
-      <p className="form-note">
-        {reply
-          ? "Record the answer you actually received. This updates the saved facts and recalculates the actual roster."
-          : "Review all applicable source messages. An interpretation does not independently verify a real qualification."}
-      </p>
-      <label>
-        Reviewed answer
-        <select
-          value={status}
-          onChange={(e) => {
-            setStatus(e.target.value as Status);
-            if (e.target.value !== fact.status) setAccept(false);
-          }}
-        >
-          {Object.entries(labels).map(([k, v]) => (
-            <option value={k} key={k}>
-              {v}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        {reply ? "Actual reply and context" : "Reason / correction"}
-        <textarea
-          rows={4}
-          name="note"
-          required
-          minLength={3}
-          maxLength={2000}
-          placeholder={
-            reply
-              ? "Paste the reply and how you confirmed it."
-              : "Explain what the evidence establishes and why."
-          }
-        />
-      </label>
-      <label>
-        Reviewed by
-        <input
-          name="reviewer"
-          required
-          maxLength={80}
-          placeholder="Your name or initials"
-        />
-      </label>
-      {fact.provenance === "clocked" && !fact.reviewed && (
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={accept}
-            onChange={(e) => setAccept(e.target.checked)}
-          />{" "}
-          Accept the source-backed proposal. Uncheck to record a
-          coordinator-provided correction.
-        </label>
-      )}
-      <button className="primary full" disabled={busy}>
-        <Check size={16} />{" "}
-        {reply ? "Save reply & update roster" : "Save reviewed fact"}
-      </button>
-    </form>
-  );
-}
-function EventForm({
-  live,
-  busy,
-  onCreate,
-}: {
-  live: boolean;
-  busy: boolean;
-  onCreate: (event: Workspace["event"]) => void;
-}) {
-  const [slots, setSlots] = useState<Slot[]>([
-      { id: crypto.randomUUID(), name: "", qualification: "", approval: false },
-    ]),
-    [brief, setBrief] = useState(""),
-    [compiling, setCompiling] = useState(false),
-    [localError, setLocalError] = useState(""),
-    [requirementNotes, setRequirementNotes] = useState<string[]>([]),
-    [unsupported, setUnsupported] = useState(false);
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        const fd = new FormData(e.currentTarget);
-        onCreate({
-          name: String(fd.get("name")),
-          date: String(fd.get("date")),
-          timezone: String(fd.get("timezone")),
-          start: String(fd.get("start")),
-          end: String(fd.get("end")),
-          brief,
-          slots,
-        });
-      }}
-    >
-      <p className="form-note">
-        One event, one shared interval, up to eight roles and twelve volunteers.
-        Multiple shifts and cross-person dependencies are outside this model.
-      </p>
-      {localError && (
-        <div className="error-banner" role="alert">
-          {localError}
-        </div>
-      )}
-      <label>
-        Event name
-        <input
-          name="name"
-          required
-          maxLength={100}
-          placeholder="e.g. The neighborhood gathering"
-        />
-      </label>
-      <div className="form-grid">
-        <label>
-          Date
-          <input type="date" name="date" required />
-        </label>
-        <label>
-          Timezone
-          <input
-            name="timezone"
-            required
-            defaultValue={Intl.DateTimeFormat().resolvedOptions().timeZone}
-            placeholder="Asia/Kolkata"
-          />
-        </label>
-        <label>
-          Starts
-          <input type="time" name="start" required />
-        </label>
-        <label>
-          Ends
-          <input type="time" name="end" required />
-        </label>
-      </div>
-      <label>
-        Organizer brief
-        <textarea
-          value={brief}
-          onChange={(e) => setBrief(e.target.value)}
-          rows={3}
-          maxLength={8000}
-          placeholder="Describe the roles and any required qualifications or approvals."
-        />
-      </label>
-      <button
-        type="button"
-        className="secondary full"
-        disabled={!live || !brief.trim() || compiling}
-        onClick={() => {
-          setCompiling(true);
-          setLocalError("");
-          void api<{
-            roles: string[];
-            requirements: string[];
-            unsupported: boolean;
-          }>("/compile", { text: brief })
-            .then((r) => {
-              setSlots(
-                r.roles.map((name) => ({
-                  id: crypto.randomUUID(),
-                  name,
-                  qualification: "",
-                  approval: false,
-                })),
-              );
-              setRequirementNotes(r.requirements);
-              setUnsupported(r.unsupported);
-            })
-            .catch((e) => setLocalError(e.message))
-            .finally(() => setCompiling(false));
-        }}
-      >
-        {compiling ? "Compiling…" : "Propose roles with Clocked Fill"}
-      </button>
-      {!live && (
-        <p className="smalltext muted">
-          Clocked is disabled. Define and review roles manually below.
-        </p>
-      )}
-      {requirementNotes.length > 0 && (
-        <div className="info-note">
-          <strong>
-            Extracted requirements: add these to the appropriate roles before
-            approving.
-          </strong>
-          <ul>
-            {requirementNotes.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {unsupported && (
-        <div className="error-banner">
-          The brief may include unsupported constraints. Revise the brief and
-          compile again, or create a supported single-interval plan manually.
-        </div>
-      )}
-      <h3 className="form-section-title">Review individual roles</h3>
-      {slots.map((s, i) => (
-        <div className="slot-input" key={s.id}>
-          <label>
-            Role {i + 1}
-            <input
-              required
-              maxLength={80}
-              value={s.name}
-              onChange={(e) =>
-                setSlots(
-                  slots.map((x) =>
-                    x.id === s.id ? { ...x, name: e.target.value } : x,
-                  ),
-                )
-              }
-            />
-          </label>
-          <label>
-            Required qualification, if any
-            <input
-              maxLength={250}
-              value={s.qualification}
-              onChange={(e) =>
-                setSlots(
-                  slots.map((x) =>
-                    x.id === s.id ? { ...x, qualification: e.target.value } : x,
-                  ),
-                )
-              }
-              placeholder="e.g. current venue access"
-            />
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={s.approval}
-              onChange={(e) =>
-                setSlots(
-                  slots.map((x) =>
-                    x.id === s.id ? { ...x, approval: e.target.checked } : x,
-                  ),
-                )
-              }
-            />{" "}
-            Coordinator approval required
-          </label>
-          {slots.length > 1 && (
-            <button
-              type="button"
-              className="text-button"
-              onClick={() => setSlots(slots.filter((x) => x.id !== s.id))}
-            >
-              <Trash2 size={13} /> Remove role
-            </button>
-          )}
-        </div>
-      ))}
-      {slots.length < 8 && (
-        <button
-          type="button"
-          className="text-button"
-          onClick={() =>
-            setSlots([
-              ...slots,
-              {
-                id: crypto.randomUUID(),
-                name: "",
-                qualification: "",
-                approval: false,
-              },
-            ])
-          }
-        >
-          <Plus size={15} /> Add another role
-        </button>
-      )}
-      <label className="checkbox-label">
-        <input type="checkbox" required /> I reviewed all requirements. These
-        roles share this interval and have no unsupported dependencies.
-      </label>
-      <button className="primary full" disabled={busy}>
-        Create event <ArrowRight size={16} />
-      </button>
-    </form>
-  );
-}
+
+
+
 
 createRoot(document.getElementById("root")!).render(<App />);

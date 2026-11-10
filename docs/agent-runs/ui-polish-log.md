@@ -115,3 +115,9 @@ NaN/Infinity budget configuration falls back to six through a pure bounded helpe
 ### 10 Nov, 03:38 PM IST — Backend 7: judge-visible documentation tidy
 
 Moved PRD, build checklist and design into docs; fixed README and all local Markdown targets, including five relative evidence links exposed by the earlier history move. Added comments for hosted token/allowance variables without supplying values. README documents the deferred access-code throttling migration and keeps Extract/Decide sequential. Suite count is 19. npm test && npm run build passed 19/19; real D1 scenarios 25.996 / 9.256 seconds, within their timeout. All seven required backend items are complete before the optional refactor cutoff.
+
+### 10 Nov, 03:44 PM IST — Backend 8: pure-move component extraction
+
+Completed before the 11 Nov ~6:30 AM IST cutoff. Moved Avatar, Dialog, FactForm and EventForm into src/components, shared display labels into a small sibling module, and api/download into src/api.ts. AST extraction hashes confirm App and all six moved function bodies byte-identical; only exports/imports and moved constants changed. styles.css untouched. Typecheck passed; npm test && npm run build passed 19/19 (D1 scenarios 11.092 / 4.344 seconds).
+
+Real local browser smoke exercised the relocated event form, reply form, native dialog Escape/focus restoration and roster CSV download. A synthetic non-JSON 503 displays the generic status error without exposing its HTML body. Initial smoke locators targeted the startup catch and an exact nested label; corrected to the actual POST failure path and accessible combobox role. No app fix was needed for those harness mismatches.
