@@ -134,7 +134,9 @@ export function importWorkspace(raw: unknown): W {
   }
   w.facts.forEach((f) => {
     f.reviewed = false;
-    f.note = "Imported backup. Review before use. " + f.note;
+    // Keep a valid maximum-length note intact rather than breaking its own backup.
+    const importNote = "Imported backup. Review before use. " + f.note;
+    if (importNote.length <= 2000) f.note = importNote;
   });
   w.baseline = {};
   return w;

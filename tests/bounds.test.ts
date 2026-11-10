@@ -1,3 +1,4 @@
+import { importWorkspace } from "../server/actions";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -38,6 +39,17 @@ test("generous persisted-data bounds preserve the demo and archived evidence", (
   assert.equal(
     Workspace.safeParse({ ...w, id: "x".repeat(201) }).success,
     false,
+  );
+  const backup = {
+    ...w,
+    facts: w.facts.map((fact) => ({ ...fact, note: "x".repeat(2000) })),
+  };
+  const restored = importWorkspace(backup);
+  assert.ok(Workspace.safeParse(restored).success);
+  assert.ok(
+    restored.facts.every(
+      (fact) => !fact.reviewed && fact.note === "x".repeat(2000),
+    ),
   );
   const archive = JSON.parse(
     readFileSync("public/recorded-review/evidence.json", "utf8"),

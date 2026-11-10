@@ -121,3 +121,7 @@ Moved PRD, build checklist and design into docs; fixed README and all local Mark
 Completed before the 11 Nov ~6:30 AM IST cutoff. Moved Avatar, Dialog, FactForm and EventForm into src/components, shared display labels into a small sibling module, and api/download into src/api.ts. AST extraction hashes confirm App and all six moved function bodies byte-identical; only exports/imports and moved constants changed. styles.css untouched. Typecheck passed; npm test && npm run build passed 19/19 (D1 scenarios 11.092 / 4.344 seconds).
 
 Real local browser smoke exercised the relocated event form, reply form, native dialog Escape/focus restoration and roster CSV download. A synthetic non-JSON 503 displays the generic status error without exposing its HTML body. Initial smoke locators targeted the startup catch and an exact nested label; corrected to the actual POST failure path and accessible combobox role. No app fix was needed for those harness mismatches.
+
+### 10 Nov, 03:45 PM IST — final bounds review follow-up
+
+Found and fixed an interaction introduced by the 2000-character note bound: a valid maximum-length backup note could exceed it when the import notice was prepended. Import now preserves that original note intact when the notice would exceed the bound; every imported fact still becomes unreviewed. Added the boundary restore assertion. npm test && npm run build && npm run typecheck passed, 19/19 tests; both D1 scenarios passed (13.058 / 4.991 seconds). No data, provider, schema migration or new endpoint changes.
