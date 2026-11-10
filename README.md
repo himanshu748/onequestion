@@ -111,4 +111,4 @@ There is no user-account login, collaboration, automatic backup export, auto-mes
 - **Reset:** restores only the fictional workspace. It does not alter other events.
 - **No roster:** check full-interval availability and role willingness independently; qualifications alone do not establish availability.
 
-Third-party dependencies retain their own licenses in their installed packages.
+Licensed under [MIT](LICENSE). Third-party dependencies and the self-hosted Instrument fonts retain their respective licenses.

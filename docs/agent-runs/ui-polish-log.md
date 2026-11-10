@@ -57,3 +57,7 @@ Added a read-only recorded-output panel inside demo workspaces, importing the sa
 ### 10 Nov, 03:12 PM IST — Addendum 2: README
 
 Kept the four-step judge path and concise endpoint table; added explicit Protect/Verify not-used row. Moved the recorded validation chronology to docs/VALIDATION_HISTORY.md and storage/evidence/export/solver detail to docs/EVIDENCE_AND_PERSISTENCE.md with links back. Removed the open license-selection sentence and obsolete no-license footer. No evidence claims dropped or upgraded.
+
+### 10 Nov, 03:12 PM IST — Addendum 3: MIT license
+
+Added the standard MIT LICENSE with 2026 Himanshu Kumar copyright, as explicitly requested, and linked it in README. Included font OFL notices remain applicable to those third-party assets.
