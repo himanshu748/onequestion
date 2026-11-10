@@ -99,3 +99,7 @@ Worker now preserves explicit expected status/message and Zod 400s; otherwise re
 Fresh clone proof: npm ci passed (181 packages); original a0029cf Cloudflare test with dist removed failed after 23.823 seconds in this environment (not the reported 120 seconds). Patched direct invocation fails immediately with the explicit missing-dist message. In the same disposable clone, rm -rf dist followed by npm test rebuilt assets via pretest and passed all 14 tests present at Backend 1. Evidence: local fresh-clone-baseline.txt, fresh-clone-fail-fast.txt and fresh-clone-npm-test.txt. No .env copied.
 
 Demo mobile Lighthouse after offscreen-player rendering fix: 94 performance / 100 accessibility, CLS 0. The previous 61 result is retained as diagnostic evidence, not hidden.
+
+### 10 Nov, 03:33 PM IST — Backend 4: zero-budget keyless runtime regression
+
+Second real local Worker starts with the explicitly synthetic key and zero daily allowance, unlocks using a synthetic local code, then asserts compile 429, unknown-person analysis 400 (not 429), and valid analysis 429. No provider call occurs. Current suite count updated to 17 in README/checklist. npm test && npm run build passed 17/17; original D1 scenario 4.580 seconds, zero-budget Worker 3.342 seconds.

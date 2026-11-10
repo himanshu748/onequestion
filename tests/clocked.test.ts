@@ -1,6 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { compileBrief, analyzePerson, prepareAnalysis } from "../server/clocked";
+import {
+  compileBrief,
+  analyzePerson,
+  prepareAnalysis,
+} from "../server/clocked";
 import { demoWorkspace } from "../src/demo";
 
 test("Clocked adapter uses documented contracts, rejects invalid spans, and leaves proposals unreviewed (synthetic transport)", async () => {
@@ -82,7 +86,6 @@ test("Clocked adapter uses documented contracts, rejects invalid spans, and leav
   }
 });
 
-
 test("analysis preparation is pure and rejects invalid inputs before provider or budget work", () => {
   const w = demoWorkspace("preparation");
   const before = JSON.stringify(w);
@@ -91,15 +94,29 @@ test("analysis preparation is pure and rejects invalid inputs before provider or
   assert.ok(prepared.text.startsWith("[Message "));
   assert.ok(prepared.facts.every((f) => f.kind !== "approval"));
   assert.equal(JSON.stringify(w), before);
-  const rejects = (candidate: typeof w, person = "cy") => assert.throws(
-    () => prepareAnalysis(candidate, person),
-    (error: unknown) => error instanceof Error && (error as Error & { status: number }).status === 400,
-  );
+  const rejects = (candidate: typeof w, person = "cy") =>
+    assert.throws(
+      () => prepareAnalysis(candidate, person),
+      (error: unknown) =>
+        error instanceof Error &&
+        (error as Error & { status: number }).status === 400,
+    );
   rejects(w, "missing");
   rejects({ ...w, sources: w.sources.filter((s) => s.personId !== "cy") });
   rejects({ ...w, sources: w.sources.map((s) => ({ ...s, derived: true })) });
-  rejects({ ...w, sources: w.sources.map((s) => s.personId === "cy" ? { ...s, text: "x".repeat(16000) } : s) });
+  rejects({
+    ...w,
+    sources: w.sources.map((s) =>
+      s.personId === "cy" ? { ...s, text: "x".repeat(16000) } : s,
+    ),
+  });
   rejects({ ...w, facts: w.facts.filter((f) => f.personId !== "cy") });
-  rejects({ ...w, sources: Array.from({ length: 100 }, (_, i) => ({ ...w.sources[0], id: "source-" + i })) });
+  rejects({
+    ...w,
+    sources: Array.from({ length: 100 }, (_, i) => ({
+      ...w.sources[0],
+      id: "source-" + i,
+    })),
+  });
   assert.equal(JSON.stringify(w), before);
 });

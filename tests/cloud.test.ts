@@ -52,12 +52,19 @@ test(
         { env, stdio: "ignore" },
       );
       let startupError: Error | undefined;
-      child.once("error", (error) => { startupError = error; });
+      child.once("error", (error) => {
+        startupError = error;
+      });
       let ready = false;
       for (let i = 0; i < 200; i++) {
-        if (startupError) throw new Error("Wrangler could not start. Run npm ci and npm run build.");
+        if (startupError)
+          throw new Error(
+            "Wrangler could not start. Run npm ci and npm run build.",
+          );
         if (child.exitCode !== null || child.signalCode !== null)
-          throw new Error(`Wrangler exited before readiness (code ${child.exitCode}, signal ${child.signalCode}). Run npm ci and npm run build.`);
+          throw new Error(
+            `Wrangler exited before readiness (code ${child.exitCode}, signal ${child.signalCode}). Run npm ci and npm run build.`,
+          );
         try {
           if ((await fetch(base + "/api/status")).ok) {
             ready = true;
@@ -159,7 +166,132 @@ test(
       });
       assert.equal(oversized.status, 413);
     } finally {
-      if (child && child.exitCode === null && child.signalCode === null && !child.killed) {
+      if (
+        child &&
+        child.exitCode === null &&
+        child.signalCode === null &&
+        !child.killed
+      ) {
+        const closed = new Promise((r) => child!.once("exit", r));
+        child.kill("SIGTERM");
+        await closed;
+      }
+      rmSync(dir, { recursive: true, force: true });
+    }
+  },
+);
+
+test(
+  "zero hosted allowance blocks valid work while invalid analysis fails before budget reservation (keyless)",
+  { timeout: 120000 },
+  async () => {
+    assert.ok(
+      existsSync("dist/index.html"),
+      "Run npm test to build dist before the Worker test.",
+    );
+    const dir = mkdtempSync(path.join(tmpdir(), "onequestion-budget-"));
+    const port = 47000 + Math.floor(Math.random() * 1000);
+    const base = `http://127.0.0.1:${port}`;
+    const cli = "node_modules/wrangler/bin/wrangler.js";
+    const env = { ...process.env, WRANGLER_SEND_METRICS: "false", CI: "true" };
+    let child: ChildProcess | undefined;
+    try {
+      execFileSync(
+        process.execPath,
+        [
+          cli,
+          "d1",
+          "migrations",
+          "apply",
+          "onequestion",
+          "--local",
+          "--persist-to",
+          dir,
+        ],
+        { env, stdio: "ignore" },
+      );
+      child = spawn(
+        process.execPath,
+        [
+          cli,
+          "dev",
+          "--ip",
+          "127.0.0.1",
+          "--port",
+          String(port),
+          "--persist-to",
+          dir,
+          "--var",
+          "LIVE_ACCESS_TOKEN:synthetic-worker-access-code",
+          "--var",
+          "CLOCKED_API_KEY:clk_synthetic_never_called",
+          "--var",
+          "LIVE_DAILY_REQUEST_LIMIT:0",
+        ],
+        { env, stdio: "ignore" },
+      );
+      let startupError: Error | undefined;
+      child.once("error", (error) => {
+        startupError = error;
+      });
+      let ready = false;
+      for (let i = 0; i < 200; i++) {
+        if (
+          startupError ||
+          child.exitCode !== null ||
+          child.signalCode !== null
+        )
+          throw new Error("Budget-test Worker exited before readiness.");
+        try {
+          if ((await fetch(base + "/api/status")).ok) {
+            ready = true;
+            break;
+          }
+        } catch {}
+        await new Promise((r) => setTimeout(r, 100));
+      }
+      assert.ok(ready, "Budget-test Worker must start");
+      const initial = await fetch(base + "/api/status");
+      const cookie = initial.headers.get("set-cookie")!.split(";")[0];
+      const call = (route: string, data: unknown) =>
+        fetch(base + "/api" + route, {
+          method: "POST",
+          headers: { Cookie: cookie, "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+      const unlock = await call("/live-session", {
+        token: "synthetic-worker-access-code",
+      });
+      assert.equal(unlock.status, 200);
+      assert.deepEqual(await unlock.json(), { live: true });
+      assert.equal(
+        (await call("/compile", { text: "One Welcome role." })).status,
+        429,
+      );
+      const created = await (await call("/workspaces", { demo: true })).json();
+      const unknown = await call(
+        `/workspaces/${created.workspace.id}/analyze`,
+        { revision: 0, personId: "unknown-person" },
+      );
+      assert.ok(unknown.status >= 400 && unknown.status < 500);
+      assert.notEqual(unknown.status, 429);
+      assert.match((await unknown.json()).error, /Person not found/);
+      assert.equal(
+        (
+          await call(`/workspaces/${created.workspace.id}/analyze`, {
+            revision: 0,
+            personId: "cy",
+          })
+        ).status,
+        429,
+      );
+    } finally {
+      if (
+        child &&
+        child.exitCode === null &&
+        child.signalCode === null &&
+        !child.killed
+      ) {
         const closed = new Promise((r) => child!.once("exit", r));
         child.kill("SIGTERM");
         await closed;

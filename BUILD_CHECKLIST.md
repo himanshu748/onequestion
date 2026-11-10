@@ -33,7 +33,7 @@ A coordinator can create a supported event, add original volunteer messages, rev
 | Desktop and 360 px rendering | Passed | 1440×1000 and 360×800 local and deployed browser inspection; no main-page overflow after repair |
 | Keyboard and reduced motion | Passed | Mobile tab arrow navigation, dialog Escape and focus restoration; reduced-motion media emulation |
 | Accessibility automation | Passed for inspected screens | axe WCAG A/AA checks; zero violations on desktop (1440×1000) and mobile (360×800) current-plan screens after contrast, semantics and overflow fixes. This is not a full accessibility certification |
-| Types, tests, dependency audit and build | Passed | npm test: 13 tests, including 400 graph comparisons; strict TypeScript; npm audit: zero advisories; Vite build passes |
+| Types, tests, dependency audit and build | Passed | Current keyless suite: 17 tests, including 400 graph comparisons and zero-allowance validation ordering; strict TypeScript; npm audit: zero advisories; Vite build passes |
 | Independent users and external qualifications | Not tested | No usability study or real credential verification |
 | Cloudflare runtime and private sessions | Passed locally | Real Worker + local D1: two visitor sessions cannot read, mutate or delete each other’s events; stale saves, imports, owner access and body limits checked |
 | Public deployment | Passed | Workers Free ($0 current plan) verified in dashboard; HTTPS API checks in docs/HOSTED_VALIDATION.json; browser preview, actual reply and reload passed |

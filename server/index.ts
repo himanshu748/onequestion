@@ -20,7 +20,12 @@ import {
   reviewFact,
   importWorkspace,
 } from "./actions";
-import { available, compileBrief, analyzePerson, prepareAnalysis } from "./clocked";
+import {
+  available,
+  compileBrief,
+  analyzePerson,
+  prepareAnalysis,
+} from "./clocked";
 
 const app = express();
 const port = Number(process.env.PORT ?? 4317);

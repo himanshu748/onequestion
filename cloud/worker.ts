@@ -12,7 +12,11 @@ import {
   reviewFact,
   importWorkspace,
 } from "../server/actions";
-import { compileBrief, analyzePerson, prepareAnalysis } from "../server/clocked";
+import {
+  compileBrief,
+  analyzePerson,
+  prepareAnalysis,
+} from "../server/clocked";
 import { videoResponse } from "./video";
 
 export interface Env {
@@ -373,7 +377,12 @@ export default {
       fail("Unknown API route.", 404);
     } catch (error) {
       const failure = publicError(error);
-      console.error({ route: errorRoute(url.pathname), method: req.method, status: failure.status, name: failure.name });
+      console.error({
+        route: errorRoute(url.pathname),
+        method: req.method,
+        status: failure.status,
+        name: failure.name,
+      });
       return respond({ error: failure.message }, failure.status);
     }
   },
